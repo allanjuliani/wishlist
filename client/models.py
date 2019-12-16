@@ -1,5 +1,7 @@
+from django.core.cache import cache
 from django.core.validators import validate_email
 from django.db import models
+from django.dispatch import receiver
 from django.utils.translation import gettext as _
 
 from product.models import Product
@@ -24,6 +26,10 @@ class Client(models.Model):
         self.email = self.email.lower()
         super().save(*args, **kwargs)
 
-    # @property
-    # def full_name(self):
-    #     return f'{self.first_name} {self.last_name}'
+
+# Clear user get cache on add or remove product
+@receiver(models.signals.m2m_changed)
+def clean_user_cache(sender, instance, **kwargs):
+    if kwargs.get('action') in ['post_add', 'post_remove']:
+        if cache.get(f'client_get_{instance.id}'):
+            cache.delete(f'client_get_{instance.id}')

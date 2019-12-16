@@ -2,6 +2,7 @@ import json
 
 from json import JSONDecodeError
 
+from django.core.cache import cache
 from django.http import JsonResponse
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -119,25 +120,42 @@ def client_product_load(request, client_id):
     if not client:
         context = {'success': False, 'message': _('Client not found')}
     else:
-        page = int(request.GET.get('page', 1))
-        page = 1 if page is 0 else page
-        per_page = 3
-        prev_page = page - 1
-        next_page = page + 1
-        start = per_page * (page - 1)
-        end = per_page + start
+        # Load cache
+        context = cache.get(f'client_get_{client_id}')
 
-        total_products = Product.objects.values().filter(client__id__exact=client_id).count()
-        values = ['title', 'brand', 'image', 'price', 'review_score']
-        products = Product.objects.values(*values).filter(client__id__exact=client_id).order_by('title')[start: end]
+        # If don't find cache, load info and save cache
+        if not context:
 
-        context = {'success': True, 'data': list(products)}
+            # Paginator math
+            page = int(request.GET.get('page', 1))
+            page = 1 if page is 0 else page
+            per_page = 3
+            prev_page = page - 1
+            next_page = page + 1
+            start = per_page * (page - 1)
+            end = per_page + start
 
-        url_prev = f"{reverse('client-products', args=(client_id,))}?page={prev_page}" if prev_page >= 1 else None
-        url_next = f"{reverse('client-products', args=(client_id,))}?page={next_page}" if end < total_products else None
+            # Load total for paginator
+            total_products = Product.objects.values().filter(client__id__exact=client_id).count()
 
-        context.update({'prev_page': url_prev})
-        context.update({'next_page': url_next})
+            # Product query
+            values = ['id', 'title', 'brand', 'image', 'price', 'review_score']
+            products = Product.objects.values(*values).filter(client__id__exact=client_id).order_by('title')[start: end]
+
+            context = {'success': True, 'data': list(products)}
+
+            # Previous page
+            url = f"{reverse('client-products', args=(client_id,))}?page={prev_page}"
+            url_prev = url if prev_page >= 1 else None
+            context.update({'prev_page': url_prev})
+
+            # Next page
+            url = f"{reverse('client-products', args=(client_id,))}?page={next_page}"
+            url_next = url if end < total_products else None
+            context.update({'next_page': url_next})
+
+            # Save the context in 12 hours cache
+            cache.set(f'client_get_{client_id}', context, 60*60*12)
 
     return JsonResponse(context, safe=False)
 

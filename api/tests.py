@@ -1,9 +1,10 @@
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from rest_framework.test import APITestCase
 
 from django.contrib.auth.models import User
+from django.core.cache import cache
 from django.urls import reverse
-from rest_framework.test import APITestCase
 
 from client.models import Client
 from product.models import Product
@@ -13,6 +14,7 @@ class ApiTest(APITestCase):
     @classmethod
     def setUpTestData(cls):
         print('\n== API Test Case ==')
+        cache.clear()
 
     def setUp(self):
         # Create admin user
@@ -221,6 +223,7 @@ class ApiTest(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json(), {'success': True, 'data': [{
+            'id': 1,
             'title': 'Product Base',
             'brand': 'Some',
             'image': 'https://placekitten.com/200/200',
