@@ -31,5 +31,8 @@ class Client(models.Model):
 @receiver(models.signals.m2m_changed)
 def clean_user_cache(sender, instance, **kwargs):
     if kwargs.get('action') in ['post_add', 'post_remove']:
-        if cache.get(f'client_get_{instance.id}'):
-            cache.delete(f'client_get_{instance.id}')
+        for i in range(1, 999):
+            if cache.get(f'client_get_{instance.id}_{i}'):
+                cache.delete(f'client_get_{instance.id}_{i}')
+            else:
+                break

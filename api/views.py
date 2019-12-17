@@ -113,14 +113,14 @@ def client_product_load(request, client_id):
         context = {'success': False, 'message': _('Client not found')}
     else:
         # Load cache
-        context = cache.get(f'client_get_{client_id}')
+        page = int(request.GET.get('page', 1))
+        page = 1 if page is 0 else page
 
-        # If don't find cache, load info and save cache
+        context = cache.get(f'client_get_{client_id}_{page}')
+
+        # If don't find cache, load info and save cache,
         if not context:
-
             # Paginator math
-            page = int(request.GET.get('page', 1))
-            page = 1 if page is 0 else page
             per_page = 3
             prev_page = page - 1
             next_page = page + 1
@@ -147,7 +147,7 @@ def client_product_load(request, client_id):
             context.update({'next_page': url_next})
 
             # Save the context in 12 hours cache
-            cache.set(f'client_get_{client_id}', context, 60*60*12)
+            cache.set(f'client_get_{client_id}_{page}', context, 60*60*12)
 
     return JsonResponse(context, safe=False)
 
