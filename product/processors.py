@@ -40,7 +40,7 @@ def product_get(product_id):
     if product:
         return {'success': True, 'data': product}
     else:
-        return {'success': False, 'message': _('Product not fount')}
+        return {'success': False, 'message': _('Product not found')}
 
 
 def product_update(product_id, request_body):

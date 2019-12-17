@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-16 21:11-0300\n"
+"PO-Revision-Date: 2019-12-16 21:08-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#: api/apps.py:7
+msgid "API"
+msgstr ""
+
+#: api/views.py:30 api/views.py:73 api/views.py:93 api/views.py:174
+#: api/views.py:207
+msgid "Invalid body format. Must be a valid Json"
+msgstr ""
+
+#: api/views.py:107
+msgid "Invalid body format. Must have a client_id and product_id"
+msgstr ""
+
+#: api/views.py:121 client/processors.py:34 client/processors.py:44
+#: client/processors.py:66
+msgid "Client not found"
+msgstr "Cliente não encontrado"
+
+#: client/admin.py:19 product/models.py:40
+msgid "Products"
+msgstr "Produtos"
+
+#: client/apps.py:7 client/models.py:18
+msgid "Client"
+msgstr "Cliente"
+
+#: client/models.py:11
+msgid "Name"
+msgstr "Nome"
+
+#: client/models.py:12
+msgid "E-mail"
+msgstr "E-mail"
+
+#: client/models.py:13 product/apps.py:7 product/models.py:39
+msgid "Product"
+msgstr "Produto"
+
+#: client/models.py:14 product/models.py:35
+msgid "Created"
+msgstr "Criado"
+
+#: client/models.py:19 product/admin.py:51
+msgid "Clients"
+msgstr "Clientes"
+
+#: client/processors.py:16
+msgid "New client created"
+msgstr "Novo cliente criado"
+
+#: client/processors.py:31
+#, python-brace-format
+msgid "Client {client_id} deleted"
+msgstr ""
+
+#: client/processors.py:59
+#, python-brace-format
+msgid "Client {client_id} updated"
+msgstr ""
+
+#: client/processors.py:79
+msgid "Product already favored"
+msgstr ""
+
+#: client/processors.py:84
+msgid "Product favored"
+msgstr ""
+
+#: client/processors.py:104
+msgid "Product not favored"
+msgstr "Produto não favoritado"
+
+#: client/processors.py:109
+#, fuzzy
+#| msgid "Product removed from favorite"
+msgid "Product removed from favorites"
+msgstr "Produto removido dos favoritos"
+
+#: product/admin.py:58 product/models.py:31
+msgid "Image"
+msgstr "Imagem"
+
+#: product/admin.py:64 product/models.py:30
+msgid "Price"
+msgstr "Preço"
+
+#: product/models.py:22
+msgid "★☆☆☆☆"
+msgstr ""
+
+#: product/models.py:23
+msgid "★★☆☆☆"
+msgstr ""
+
+#: product/models.py:24
+msgid "★★★☆☆"
+msgstr ""
+
+#: product/models.py:25
+msgid "★★★★☆"
+msgstr ""
+
+#: product/models.py:26
+msgid "★★★★★"
+msgstr ""
+
+#: product/models.py:28
+msgid "Title"
+msgstr "Título"
+
+#: product/models.py:29
+msgid "Slug"
+msgstr ""
+
+#: product/models.py:32
+msgid "Brand"
+msgstr "Marca"
+
+#: product/models.py:34
+msgid "Review Score"
+msgstr "Avaliação"
+
+#: product/processors.py:15
+msgid "New product created"
+msgstr "Novo produto criado"
+
+#: product/processors.py:30
+#, python-brace-format
+msgid "Product {product_id} deleted"
+msgstr "Produto {product_id} deletado"
+
+#: product/processors.py:33 product/processors.py:43 product/processors.py:65
+msgid "Product not found"
+msgstr "Produto não encontrado"
+
+#: product/processors.py:58
+#, python-brace-format
+msgid "Product {product_id} updated"
+msgstr ""
+
+#: product/utils.py:8
+msgid "Price invalid"
+msgstr ""
+
+#: wishlist/admin.py:4
+msgid "Home"
+msgstr ""
+
+#: wishlist/admin.py:5
+msgid "Wishlist Administration"
+msgstr "Administração dos Produtos Favoritos"

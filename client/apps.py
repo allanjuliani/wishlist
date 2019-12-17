@@ -1,5 +1,7 @@
 from django.apps import AppConfig
+from django.utils.translation import ugettext_lazy as _
 
 
-class UserConfig(AppConfig):
+class ClientConfig(AppConfig):
     name = 'client'
+    verbose_name = _('Client')

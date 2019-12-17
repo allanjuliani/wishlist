@@ -106,7 +106,7 @@ def favorite_remove(client_id, product_id):
             # Remove product
             client.products.remove(product)
 
-            return {'success': True, 'message': _('Product removed from favorite'), 'data': {
+            return {'success': True, 'message': _('Product removed from favorites'), 'data': {
                 'client_id': client_id,
                 'product_id': product_id}}
 

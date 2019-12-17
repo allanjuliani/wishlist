@@ -8,7 +8,7 @@ Is recommended to run the project:
 
 ## Dependencies
 
-`sudo apt-get install memcached python-virtualenv git libmysqlclient-dev -y`
+`sudo apt-get install git python-virtualenv memcached gettext libmysqlclient-dev -y`
 
 ### Create the Virtualenv
 `cd ~/ && virtualenv wishlist --python=/usr/bin/python3 && mkdir wishlist/src && cd wishlist/src`
