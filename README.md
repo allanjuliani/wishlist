@@ -6,7 +6,7 @@ Is recommended to run the project:
 - Python 3.6 or later
 - MySQL 5.6 or later or SQLite 3.24 or later
 
-### Ubuntu Dependencies
+#### Ubuntu Dependencies
 
 `sudo apt-get install git python-virtualenv memcached libxml2-dev libxslt1-dev libevent-dev python-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y`
 
@@ -57,8 +57,10 @@ start in portuguese
 
 `make start_br`
 
-##### Access the admin on browser
+##### The admin URL to access on browser
 `http://localhost:8000/admin/`
+
+## The REST API
 
 ##### Add Client
 ```
@@ -133,7 +135,6 @@ Content-Type: application/json
     "price": 159.99,
     "review_score": 4
 }
-
 ```
 
 #### Delete Product
@@ -141,4 +142,36 @@ Content-Type: application/json
 DELETE /api/product/[product_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
+```
+
+
+##### Add Favorite Product
+```
+POST /api/client/product/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
+
+{
+    "client_id": [client_id],
+    "product_id": [product_id]
+}
+```
+
+#### Load Favorites Product
+```
+GET /api/client/[client_id]/products/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
+```
+
+#### Delete Client
+```
+DELETE /api/client/product/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
+
+{
+    "client_id": [client_id],
+    "product_id": [product_id]
+}
 ```
