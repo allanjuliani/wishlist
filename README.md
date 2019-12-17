@@ -74,14 +74,14 @@ Content-Type: application/json
 }
 ```
 
-#### Load Client
+##### Load Client
 ```
 GET /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
-#### Edit Client
+##### Edit Client
 ```
 PUT /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
@@ -94,7 +94,7 @@ Content-Type: application/json
 
 ```
 
-#### Delete Client
+##### Delete Client
 ```
 DELETE /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
@@ -137,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-#### Delete Product
+##### Delete Product
 ```
 DELETE /api/product/[product_id]/
 Authorization: Token [TOKEN_GENERATED]
@@ -157,14 +157,14 @@ Content-Type: application/json
 }
 ```
 
-#### Load Favorites Product
+##### Load Favorites Product
 ```
 GET /api/client/[client_id]/products/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
-#### Delete Client
+##### Delete Client
 ```
 DELETE /api/client/product/
 Authorization: Token [TOKEN_GENERATED]
