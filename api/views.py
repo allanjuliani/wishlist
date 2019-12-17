@@ -36,14 +36,6 @@ def client_add(request):
         # Get or create User, using Django Forms
         context = client_create(request_body)
 
-        # # Is the function returns an User instance
-        # if isinstance(client, User):
-        #     context = client
-        #
-        # # If the client is not valid, returns forms errors
-        # else:
-        #     context = client
-
     # Return json request
     finally:
         return JsonResponse(context, safe=False)
