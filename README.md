@@ -44,3 +44,39 @@ Comment lines 83 to 86 and uncomment the line 88 to 97 on settings.py. Fill the 
 ### Start Project 
 
 `./manage.py runserver 0.0.0.0:8000` 
+
+
+### Test application
+
+If you are running on localhost
+
+#### Add Client
+##### POST http://localhost:8000/api/client/
+`
+POST http://localhost:8000/api/client/
+Authorization Token [token generated]
+Content-Type application/json
+{
+    "name": "Allan Juliani",
+    "email": "allan.s.juliani3@gmail.com"
+}`
+
+#### Edit Client
+`
+PUT http://192.168.0.100:8000/api/product/
+Accept: application/json, text/javascript
+// Authorization key=123
+// Content-Type application/json
+{
+    "user": {
+        "first_name": "Allan",
+        "last_name": "Juliani",
+        "email": "allan.s.juliani3@gmail.com"
+    },
+    "product": {
+        "title": "Generic Product 2",
+        "brand": "Generic Brand",
+        "price": 9.99,
+        "review_score": 5
+    }
+}
