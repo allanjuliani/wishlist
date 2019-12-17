@@ -4,7 +4,7 @@ Is recommended to run the project:
 
 - Ubuntu 18.08 or later
 - Python 3.6 or later
-- MySQL 5.7 or 8.0 or SQLite 3.24 or later
+- MySQL 5.7 or later or SQLite 3.24 or later
 
 ### Dependencies
 
@@ -41,14 +41,21 @@ Comment lines 83 to 86 and uncomment the line 88 to 97 on settings.py. Fill the 
 
 `./manage.py drf_create_token [your user]`
 
-#### Start Project 
+#### Test application
+
+`./manage.py test`
+
+#### Running application
 
 `./manage.py runserver 0.0.0.0:8000` 
 
+or, start in english
 
-#### Test application
+`make start_en`
 
-If you are running on localhost
+start in portuguese
+
+`make start_br`
 
 ##### Add Client
 ```
@@ -60,6 +67,13 @@ Content-Type: application/json
     "name": "Your Name",
     "email": "your_email@example.com"
 }
+```
+
+#### Load Client
+```
+GET /api/client/[client_id]/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
 ```
 
 #### Edit Client
@@ -75,24 +89,18 @@ Content-Type: application/json
 
 ```
 
-#### Load Client
-```
-GET /api/client/[client_id]/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-```
-
 #### Delete Client
 ```
-PUT /api/client/[client_id]/
+DELETE /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
-
 ```
 
 ##### Add Product
 ```
 POST /api/product/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
 {
     "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
     "brand": "Sony",
@@ -102,36 +110,32 @@ POST /api/product/
 }
 
 ```
-##### Add Client
+##### Load Product
+
 ```
+GET /api/product/[product_id]/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
+```
+
+##### Edit Product
+```
+PUT /api/product/[product_id]/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
 {
     "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
     "brand": "Sony",
     "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
-    "price": 188.89,
-    "review_score": 1
+    "price": 159.99,
+    "review_score": 4
 }
 
 ```
-##### Add Client
-```
-{
-    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
-    "brand": "Sony",
-    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
-    "price": 188.89,
-    "review_score": 1
-}
 
+#### Delete Product
 ```
-##### Add Client
-```
-{
-    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
-    "brand": "Sony",
-    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
-    "price": 188.89,
-    "review_score": 1
-}
-
+DELETE /api/product/[product_id]/
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
 ```
