@@ -25,7 +25,7 @@ Is recommended to run the project:
 
 #### Install Database
 
-Default is set SQLite. If you want to use MySQL, created the database:
+Default is set SQLite. If you want to use MySQL, create the database:
 
 `CREATE DATABASE wishlist CHARACTER SET utf8 COLLATE utf8_general_ci;`
 
@@ -41,11 +41,11 @@ Comment the lines 83 to 86 and uncomment the lines 88 to 97 on settings.py. Fill
 
 `./manage.py drf_create_token [your user]`
 
-#### Test application
+#### Test the application
 
 `./manage.py test`
 
-#### Running application
+#### Running the application
 
 `./manage.py runserver 0.0.0.0:8000` 
 
@@ -57,7 +57,7 @@ start in portuguese
 
 `make start_br`
 
-#### The admin URL to access on browser
+#### Admin URL to access on browser
 `http://localhost:8000/admin/`
 
 ## The REST API
@@ -171,7 +171,7 @@ Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
-#### Delete Client
+#### Delete Favorite Product
 ```
 DELETE /api/client/product/
 Authorization: Token [TOKEN_GENERATED]
