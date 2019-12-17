@@ -4,9 +4,9 @@ Is recommended to run the project:
 
 - Ubuntu 18.08 or later
 - Python 3.6 or later
-- MySQL 5.7 or later or SQLite 3.24 or later
+- MySQL 5.6 or later or SQLite 3.24 or later
 
-### Dependencies
+### Ubuntu Dependencies
 
 `sudo apt-get install git python-virtualenv memcached libxml2-dev libxslt1-dev libevent-dev python-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y`
 

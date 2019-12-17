@@ -206,7 +206,7 @@ class ApiTest(APITestCase):
         response = self.client.delete(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'Product removed from favorite', 'data': {
+        self.assertEqual(response.json(), {'success': True, 'message': 'Product removed from favorites', 'data': {
             'client_id': 1,
             'product_id': 1}})
 

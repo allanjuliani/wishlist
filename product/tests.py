@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.test import TestCase
 
 from product.models import Product
@@ -6,12 +7,24 @@ from product.models import Product
 class ProductTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
-        print('== Product Test Case ==')
+        print('\n== Product Test Case ==')
 
         Product.objects.create(
             title='Generic Product That Allow Everything Be Tested',
             price='9.99',
-            image='',
-            brand=brand,
+            brand='Some',
+            image='https://placekitten.com/200/200',
             review_score=Product.ReviewScore.FIFTH_SCORE
         )
+
+    def test_title_unique_field(self):
+        with self.assertRaises(Exception) as raised:
+            Product.objects.create(
+                title='Generic Product That Allow Everything Be Tested',
+                price='9.99',
+                brand='Some',
+                image='https://placekitten.com/200/200',
+                review_score=Product.ReviewScore.FIFTH_SCORE
+            )
+
+        self.assertEqual(IntegrityError, type(raised.exception))
