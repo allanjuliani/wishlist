@@ -35,7 +35,7 @@ def product_delete(product_id):
 
 def product_get(product_id):
     # Load product
-    product = Product.objects.values('title', 'brand', 'image', 'price').filter(id=product_id).first()
+    product = Product.objects.values('title', 'brand', 'image', 'price', 'review_score').filter(id=product_id).first()
 
     if product:
         return {'success': True, 'data': product}

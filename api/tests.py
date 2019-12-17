@@ -123,6 +123,7 @@ class ApiTest(APITestCase):
             'brand': 'Some',
             'image': 'https://placekitten.com/200/200',
             'price': '59.99',
+            'review_score': None,
         }
         """
         url = reverse('product-management', args=(self.product_base.id,))
@@ -134,6 +135,7 @@ class ApiTest(APITestCase):
             'brand': 'Some',
             'image': 'https://placekitten.com/200/200',
             'price': '59.99',
+            'review_score': None,
         }})
 
     def test_product_update(self):

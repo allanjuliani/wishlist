@@ -164,6 +164,13 @@ Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
+If there is more than 3 products, is generated a pagination URL in the response:
+```
+GET /api/client/[client_id]/products/?page=2
+Authorization: Token [TOKEN_GENERATED]
+Content-Type: application/json
+```
+
 ##### Delete Client
 ```
 DELETE /api/client/product/
