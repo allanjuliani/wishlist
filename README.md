@@ -29,7 +29,7 @@ Default is set SQLite. If you want to use MySQL, created the database:
 
 `CREATE DATABASE wishlist CHARACTER SET utf8 COLLATE utf8_general_ci;`
 
-Comment lines 83 to 86 and uncomment the line 88 to 97 on settings.py. Fill the default settings with your database.  
+Comment the lines 83 to 86 and uncomment the lines 88 to 97 on settings.py. Fill the default settings with your database configurations.  
 
 `./manage.py migrate`
 
@@ -56,6 +56,9 @@ or, start in english
 start in portuguese
 
 `make start_br`
+
+##### Access the admin on browser
+`http://localhost:8000/admin/`
 
 ##### Add Client
 ```
