@@ -13,15 +13,15 @@ Is recommended to run the project:
 #### Create the Virtualenv
 `cd ~/ && virtualenv wishlist --python=/usr/bin/python3 && mkdir wishlist/src && cd wishlist/src`
 
-#### Activate Virtualenv
-`source ~/wishlist/bin/activate`
-
 #### Clone the Project
 `git clone https://github.com/allanjuliani/wishlist.git`
 
+#### Activate Virtualenv
+`source ~/wishlist/bin/activate`
+
 #### Install Python Dependencies
 
-`pip install -r requirements.txt`
+`cd ~/wishlist/src/wishlist && pip install -r requirements.txt`
 
 #### Install Database
 
@@ -90,13 +90,48 @@ Content-Type: application/json
 
 ```
 
+##### Add Product
+```
+POST /api/product/
+{
+    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
+    "brand": "Sony",
+    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
+    "price": 188.89,
+    "review_score": 5
+}
 
 ```
-    "product": {
-        "title": "Generic Product 2",
-        "brand": "Generic Brand",
-        "price": 9.99,
-        "review_score": 5
-    }
+##### Add Client
+```
+{
+    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
+    "brand": "Sony",
+    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
+    "price": 188.89,
+    "review_score": 1
 }
+
+```
+##### Add Client
+```
+{
+    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
+    "brand": "Sony",
+    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
+    "price": 188.89,
+    "review_score": 1
+}
+
+```
+##### Add Client
+```
+{
+    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
+    "brand": "Sony",
+    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
+    "price": 188.89,
+    "review_score": 1
+}
+
 ```
