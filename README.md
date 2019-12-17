@@ -57,12 +57,12 @@ start in portuguese
 
 `make start_br`
 
-##### The admin URL to access on browser
+#### The admin URL to access on browser
 `http://localhost:8000/admin/`
 
 ## The REST API
 
-##### Add Client
+#### Add Client
 ```
 POST /api/client/
 Authorization: Token [TOKEN_GENERATED]
@@ -74,14 +74,14 @@ Content-Type: application/json
 }
 ```
 
-##### Load Client
+#### Load Client
 ```
 GET /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
-##### Edit Client
+#### Edit Client
 ```
 PUT /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
@@ -94,14 +94,14 @@ Content-Type: application/json
 
 ```
 
-##### Delete Client
+#### Delete Client
 ```
 DELETE /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
-##### Add Product
+#### Add Product
 ```
 POST /api/product/
 Authorization: Token [TOKEN_GENERATED]
@@ -115,7 +115,7 @@ Content-Type: application/json
 }
 
 ```
-##### Load Product
+#### Load Product
 
 ```
 GET /api/product/[product_id]/
@@ -123,7 +123,7 @@ Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
-##### Edit Product
+#### Edit Product
 ```
 PUT /api/product/[product_id]/
 Authorization: Token [TOKEN_GENERATED]
@@ -137,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-##### Delete Product
+#### Delete Product
 ```
 DELETE /api/product/[product_id]/
 Authorization: Token [TOKEN_GENERATED]
@@ -145,7 +145,7 @@ Content-Type: application/json
 ```
 
 
-##### Add Favorite Product
+#### Add Favorite Product
 ```
 POST /api/client/product/
 Authorization: Token [TOKEN_GENERATED]
@@ -157,7 +157,7 @@ Content-Type: application/json
 }
 ```
 
-##### Load Favorites Product
+#### Load Favorites Product
 ```
 GET /api/client/[client_id]/products/
 Authorization: Token [TOKEN_GENERATED]
@@ -171,7 +171,7 @@ Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
-##### Delete Client
+#### Delete Client
 ```
 DELETE /api/client/product/
 Authorization: Token [TOKEN_GENERATED]
