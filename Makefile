@@ -1,19 +1,30 @@
-PORT=8000
-SITE=wishlist
+build: 
+	@docker-compose build
 
-start_br:
-	@./manage.py runserver 0.0.0.0:$(PORT) --settings=$(SITE).settings_pt_br
-
-start_en:
-	@./manage.py runserver 0.0.0.0:$(PORT) --settings=$(SITE).settings
-
-translate:
-	@./manage.py makemessages -l pt_BR
-	@./manage.py compilemessages -l pt_BR
-
-migrate:
-	@./manage.py makemigrations
-	@./manage.py migrate
+up:
+	@docker-compose up -d
 
 stop:
-	@pkill -f $(PORT)
+	@docker-compose down
+
+rebuild: 
+	@docker-compose down --remove-orphans
+	@docker-compose build --no-cache
+
+remove:
+	@docker-compose down --volumes --remove-orphans
+
+clean:
+	@docker image rm django_wishlist
+
+createsuperuser:
+	@docker exec -it django_wishlist python manage.py createsuperuser
+
+shell-django:
+	@docker exec -it django_wishlist /bin/bash
+
+shell-mysql:
+	@docker exec -it mysql_wishlist /bin/bash
+
+shell-nginx:
+	@docker exec -it nginx_wishlist /bin/bash

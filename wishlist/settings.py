@@ -140,7 +140,7 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = '%s/static' % BASE_DIR
 
 # REST Framework Auth Classes
 # https://www.django-rest-framework.org/api-guide/authentication/

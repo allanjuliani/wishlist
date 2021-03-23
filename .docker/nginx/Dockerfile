@@ -1,0 +1,1 @@
+COPY . /home/ubuntu/wishlist
