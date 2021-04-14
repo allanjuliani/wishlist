@@ -7,7 +7,7 @@ https://docs.docker.com/engine/install/
 ### Build project
 
 ```commandline
-make build 
+make build
 ```
 
 ### Start project
@@ -27,7 +27,7 @@ http://localhost:8000/admin/
 
 http://localhost:8000/
 
-#### Remove 
+#### Remove
 ```commandline
 make remove
 make clean

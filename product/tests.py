@@ -14,7 +14,7 @@ class ProductTestCase(TestCase):
             price='9.99',
             brand='Some',
             image='https://placekitten.com/200/200',
-            review_score=Product.ReviewScore.FIFTH_SCORE
+            review_score=Product.ReviewScore.FIFTH_SCORE,
         )
 
     def test_title_unique_field(self):
@@ -24,7 +24,7 @@ class ProductTestCase(TestCase):
                 price='9.99',
                 brand='Some',
                 image='https://placekitten.com/200/200',
-                review_score=Product.ReviewScore.FIFTH_SCORE
+                review_score=Product.ReviewScore.FIFTH_SCORE,
             )
 
         self.assertEqual(IntegrityError, type(raised.exception))

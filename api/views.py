@@ -1,19 +1,19 @@
 import json
-
 from json import JSONDecodeError
 
 from django.core.cache import cache
 from django.http import JsonResponse
 from django.urls import reverse
 from django.utils.translation import gettext as _
-
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
 from client.models import Client
-from client.processors import client_create, client_delete, client_get, client_update, favorite_create, favorite_remove
+from client.processors import (client_create, client_delete, client_get,
+                               client_update, favorite_create, favorite_remove)
 from product.models import Product
-from product.processors import product_create, product_delete, product_get, product_update
+from product.processors import (product_create, product_delete, product_get,
+                                product_update)
 
 
 @api_view(['POST'])
@@ -27,7 +27,10 @@ def client_add(request):
 
     # If Json is not valid
     except JSONDecodeError:
-        context = {'success': False, 'message': _('Invalid body format. Must be a valid Json')}
+        context = {
+            'success': False,
+            'message': _('Invalid body format. Must be a valid Json'),
+        }
 
     # With a valid json
     else:
@@ -62,7 +65,10 @@ def client_management(request, client_id):
 
         # If Json is not valid
         except json.JSONDecodeError:
-            context = {'success': False, 'message': _('Invalid body format. Must be a valid Json')}
+            context = {
+                'success': False,
+                'message': _('Invalid body format. Must be a valid Json'),
+            }
 
         # With a valid json
         else:
@@ -82,7 +88,10 @@ def client_products_management(request):
 
     # If Json is not valid
     except JSONDecodeError:
-        context = {'success': False, 'message': _('Invalid body format. Must be a valid Json')}
+        context = {
+            'success': False,
+            'message': _('Invalid body format. Must be a valid Json'),
+        }
 
     # With a valid json
     else:
@@ -96,7 +105,12 @@ def client_products_management(request):
             if request.method == 'DELETE':
                 context = favorite_remove(client_id, product_id)
         else:
-            context = {'success': False, 'message': _('Invalid body format. Must have a client_id and product_id')}
+            context = {
+                'success': False,
+                'message': _(
+                    'Invalid body format. Must have a client_id and product_id'
+                ),
+            }
 
     # Return json request
     finally:
@@ -128,11 +142,17 @@ def client_product_load(request, client_id):
             end = per_page + start
 
             # Load total for paginator
-            total_products = Product.objects.values().filter(client__id__exact=client_id).count()
+            total_products = (
+                Product.objects.values().filter(client__id__exact=client_id).count()
+            )
 
             # Product query
             values = ['id', 'title', 'brand', 'image', 'price', 'review_score']
-            products = Product.objects.values(*values).filter(client__id__exact=client_id).order_by('title')[start: end]
+            products = (
+                Product.objects.values(*values)
+                .filter(client__id__exact=client_id)
+                .order_by('title')[start:end]
+            )
 
             context = {'success': True, 'data': list(products)}
 
@@ -147,7 +167,7 @@ def client_product_load(request, client_id):
             context.update({'next_page': url_next})
 
             # Save the context in 12 hours cache
-            cache.set(f'client_get_{client_id}_{page}', context, 60*60*12)
+            cache.set(f'client_get_{client_id}_{page}', context, 60 * 60 * 12)
 
     return JsonResponse(context, safe=False)
 
@@ -163,7 +183,10 @@ def product_add(request):
 
     # If Json is not valid
     except JSONDecodeError:
-        context = {'success': False, 'message': _('Invalid body format. Must be a valid Json')}
+        context = {
+            'success': False,
+            'message': _('Invalid body format. Must be a valid Json'),
+        }
 
     # With a valid json
     else:
@@ -196,7 +219,10 @@ def product_management(request, product_id):
 
         # If Json is not valid
         except json.JSONDecodeError:
-            context = {'success': False, 'message': _('Invalid body format. Must be a valid Json')}
+            context = {
+                'success': False,
+                'message': _('Invalid body format. Must be a valid Json'),
+            }
 
         # With a valid json
         else:

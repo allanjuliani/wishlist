@@ -15,7 +15,9 @@ class ClientAdmin(admin.ModelAdmin):
                 '<a href="{url}?client__id__exact={id}">{total}</a>',
                 url=reverse('admin:product_product_changelist'),
                 id=obj.id,
-                total=total)
+                total=total,
+            )
+
     products_link.short_description = _('Products')
 
     filter_horizontal = ('products',)

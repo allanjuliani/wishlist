@@ -12,7 +12,11 @@ def product_create(request_body):
         # Save product
         product = product_form.save()
         # return new product id
-        return {'success': True, 'message': _('New product created'), 'data': {'product_id': product.id}}
+        return {
+            'success': True,
+            'message': _('New product created'),
+            'data': {'product_id': product.id},
+        }
 
     # If there is any form error, return it
     else:
@@ -35,7 +39,11 @@ def product_delete(product_id):
 
 def product_get(product_id):
     # Load product
-    product = Product.objects.values('title', 'brand', 'image', 'price', 'review_score').filter(id=product_id).first()
+    product = (
+        Product.objects.values('title', 'brand', 'image', 'price', 'review_score')
+        .filter(id=product_id)
+        .first()
+    )
 
     if product:
         return {'success': True, 'data': product}
@@ -53,9 +61,17 @@ def product_update(product_id, request_body):
         if product_form.is_valid():
             product_form.save()
 
-            data = Product.objects.values('title', 'brand', 'image', 'price').filter(id=product_id).first()
+            data = (
+                Product.objects.values('title', 'brand', 'image', 'price')
+                .filter(id=product_id)
+                .first()
+            )
 
-            return {'success': True, 'message': _(f'Product {product_id} updated'), 'data': data}
+            return {
+                'success': True,
+                'message': _(f'Product {product_id} updated'),
+                'data': data,
+            }
 
         # If there is and error, return it
         else:

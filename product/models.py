@@ -3,7 +3,6 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
 
-
 # Initially I wanted to create the Brand as a foreign key, but, this would create a SQL inner join on every query.
 # Was removed to the API be faster.
 # class Brand(models.Model):
@@ -28,7 +27,9 @@ class Product(models.Model):
     price = models.DecimalField(_('Price'), max_digits=8, decimal_places=2)
     image = models.URLField(_('Image'))
     brand = models.CharField(_('Brand'), max_length=96, db_index=True)
-    review_score = models.SmallIntegerField(_('Review Score'), choices=ReviewScore.choices,  null=True, blank=True)
+    review_score = models.SmallIntegerField(
+        _('Review Score'), choices=ReviewScore.choices, null=True, blank=True
+    )
     created = models.DateTimeField(_('Created'), auto_now_add=True)
 
     class Meta:

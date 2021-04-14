@@ -15,7 +15,9 @@ class ProductAdmin(admin.ModelAdmin):
                 '<a href="{url}?products__id__exact={id}">{total}</a>',
                 url=reverse('admin:client_client_changelist'),
                 id=obj.id,
-                total=total)
+                total=total,
+            )
+
     clients_link.short_description = _('Clients')
 
     def image_preview(self, obj):
@@ -23,6 +25,7 @@ class ProductAdmin(admin.ModelAdmin):
             return format_html('<img width="100" src="{path}">', path=obj.image)
         else:
             '-'
+
     image_preview.short_description = _('Image')
     image_preview.admin_order_field = 'image'
 
@@ -33,8 +36,16 @@ class ProductAdmin(admin.ModelAdmin):
     price_formatted.admin_order_field = 'price'
 
     exclude = ('slug',)
-    list_display = ('id', 'image_preview', 'title', 'price_formatted', 'brand', 'review_score', 'clients_link',
-                    'created')
+    list_display = (
+        'id',
+        'image_preview',
+        'title',
+        'price_formatted',
+        'brand',
+        'review_score',
+        'clients_link',
+        'created',
+    )
     list_display_links = list_display
     list_filter = ('created', 'review_score', 'brand')
     list_per_page = 20

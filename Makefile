@@ -1,4 +1,4 @@
-build: 
+build:
 	@docker-compose build
 
 up:
@@ -7,7 +7,7 @@ up:
 stop:
 	@docker-compose down
 
-rebuild: 
+rebuild:
 	@docker-compose down --remove-orphans
 	@docker-compose build --no-cache
 

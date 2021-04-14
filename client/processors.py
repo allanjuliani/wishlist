@@ -13,7 +13,11 @@ def client_create(request_body):
         # Save client
         user = client_form.save()
         # return new user id
-        return {'success': True, 'message': _('New client created'), 'data': {'client_id': user.id}}
+        return {
+            'success': True,
+            'message': _('New client created'),
+            'data': {'client_id': user.id},
+        }
 
     # If there is any form error, return it
     else:
@@ -54,9 +58,17 @@ def client_update(client_id, request_body):
         if client_form.is_valid():
             client_form.save()
 
-            data = Client.objects.values('id', 'name', 'email').filter(id=client_id).first()
+            data = (
+                Client.objects.values('id', 'name', 'email')
+                .filter(id=client_id)
+                .first()
+            )
 
-            return {'success': True, 'message': _(f'Client {client_id} updated'), 'data': data}
+            return {
+                'success': True,
+                'message': _(f'Client {client_id} updated'),
+                'data': data,
+            }
 
         # If there is and error, return it
         else:
@@ -81,9 +93,11 @@ def favorite_create(client_id, product_id):
             # Add product to client
             client.products.add(product)
 
-            return {'success': True, 'message': _('Product favored'), 'data': {
-                'client_id': client_id,
-                'product_id': product_id}}
+            return {
+                'success': True,
+                'message': _('Product favored'),
+                'data': {'client_id': client_id, 'product_id': product_id},
+            }
 
     elif not client:
         return {'success': False, 'message': 'Client not found'}
@@ -106,9 +120,11 @@ def favorite_remove(client_id, product_id):
             # Remove product
             client.products.remove(product)
 
-            return {'success': True, 'message': _('Product removed from favorites'), 'data': {
-                'client_id': client_id,
-                'product_id': product_id}}
+            return {
+                'success': True,
+                'message': _('Product removed from favorites'),
+                'data': {'client_id': client_id, 'product_id': product_id},
+            }
 
     elif not client:
         return {'success': False, 'message': 'Client not found'}

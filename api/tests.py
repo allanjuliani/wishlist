@@ -1,10 +1,9 @@
-from rest_framework import status
-from rest_framework.authtoken.models import Token
-from rest_framework.test import APITestCase
-
 from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.urls import reverse
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.test import APITestCase
 
 from client.models import Client
 from product.models import Product
@@ -44,10 +43,19 @@ class ApiTest(APITestCase):
         """
         url = reverse('client-add')
         data = {'name': 'Client Add', 'email': 'useradd@example.com'}
-        response = self.client.post(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        response = self.client.post(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'New client created', 'data': {'client_id': 2}})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'message': 'New client created',
+                'data': {'client_id': 2},
+            },
+        )
 
     def test_client_load(self):
         """
@@ -58,8 +66,17 @@ class ApiTest(APITestCase):
         response = self.client.get(url, HTTP_AUTHORIZATION=f'Token {self.token}')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'data': {
-            'id': 1, 'name': 'Client Base', 'email': 'client.base@example.com'}})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'data': {
+                    'id': 1,
+                    'name': 'Client Base',
+                    'email': 'client.base@example.com',
+                },
+            },
+        )
 
     def test_client_update(self):
         """
@@ -71,12 +88,23 @@ class ApiTest(APITestCase):
         """
         url = reverse('client-management', args=(self.client_base.id,))
         data = {'name': 'Client New Name', 'email': 'client.base@example.com'}
-        response = self.client.put(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        response = self.client.put(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'Client 1 updated', 'data': {
-            'id': 1, 'name': 'Client New Name',
-            'email': 'client.base@example.com'}})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'message': 'Client 1 updated',
+                'data': {
+                    'id': 1,
+                    'name': 'Client New Name',
+                    'email': 'client.base@example.com',
+                },
+            },
+        )
 
     def test_client_delete(self):
         """
@@ -87,7 +115,9 @@ class ApiTest(APITestCase):
         response = self.client.delete(url, HTTP_AUTHORIZATION=f'Token {self.token}')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'Client 1 deleted'})
+        self.assertEqual(
+            response.json(), {'success': True, 'message': 'Client 1 deleted'}
+        )
 
     def test_product_add(self):
         """
@@ -107,13 +137,21 @@ class ApiTest(APITestCase):
             'brand': 'Some',
             'image': 'https://placekitten.com/200/200',
             'price': 59.99,
-            'review_score': 5
+            'review_score': 5,
         }
-        response = self.client.post(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        response = self.client.post(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {
-            'success': True, 'message': 'New product created', 'data': {'product_id': 2}})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'message': 'New product created',
+                'data': {'product_id': 2},
+            },
+        )
 
     def test_product_load(self):
         """
@@ -130,13 +168,19 @@ class ApiTest(APITestCase):
         response = self.client.get(url, HTTP_AUTHORIZATION=f'Token {self.token}')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'data': {
-            'title': 'Product Base',
-            'brand': 'Some',
-            'image': 'https://placekitten.com/200/200',
-            'price': '59.99',
-            'review_score': None,
-        }})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'data': {
+                    'title': 'Product Base',
+                    'brand': 'Some',
+                    'image': 'https://placekitten.com/200/200',
+                    'price': '59.99',
+                    'review_score': None,
+                },
+            },
+        )
 
     def test_product_update(self):
         """
@@ -156,15 +200,24 @@ class ApiTest(APITestCase):
             'image': 'https://placekitten.com/200/200',
             'price': '29.99',
         }
-        response = self.client.put(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        response = self.client.put(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'Product 1 updated', 'data': {
-            'title': 'Product Updated',
-            'brand': 'Some',
-            'image': 'https://placekitten.com/200/200',
-            'price': '29.99',
-        }})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'message': 'Product 1 updated',
+                'data': {
+                    'title': 'Product Updated',
+                    'brand': 'Some',
+                    'image': 'https://placekitten.com/200/200',
+                    'price': '29.99',
+                },
+            },
+        )
 
     def test_product_delete(self):
         """
@@ -175,7 +228,9 @@ class ApiTest(APITestCase):
         response = self.client.delete(url, HTTP_AUTHORIZATION=f'Token {self.token}')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'Product 1 deleted'})
+        self.assertEqual(
+            response.json(), {'success': True, 'message': 'Product 1 deleted'}
+        )
 
     def test_client_add_product(self):
         """
@@ -187,12 +242,19 @@ class ApiTest(APITestCase):
         """
         url = reverse('client-products-management')
         data = {'client_id': 1, 'product_id': 1}
-        response = self.client.post(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        response = self.client.post(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'Product favored',  'data': {
-            'client_id': 1,
-            'product_id': 1}})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'message': 'Product favored',
+                'data': {'client_id': 1, 'product_id': 1},
+            },
+        )
 
     def test_client_delete_product(self):
         """
@@ -204,13 +266,22 @@ class ApiTest(APITestCase):
         """
         url = reverse('client-products-management')
         data = {'client_id': 1, 'product_id': 1}
-        self.client.post(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
-        response = self.client.delete(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        self.client.post(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
+        response = self.client.delete(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'message': 'Product removed from favorites', 'data': {
-            'client_id': 1,
-            'product_id': 1}})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'message': 'Product removed from favorites',
+                'data': {'client_id': 1, 'product_id': 1},
+            },
+        )
 
     def test_client_products_load(self):
         """
@@ -218,17 +289,31 @@ class ApiTest(APITestCase):
         """
         url = reverse('client-products-management')
         data = {'client_id': 1, 'product_id': 1}
-        self.client.post(url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        self.client.post(
+            url, data, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         url = reverse('client-products', args=(self.client_base.id,))
-        response = self.client.get(url, HTTP_AUTHORIZATION=f'Token {self.token}', format='json')
+        response = self.client.get(
+            url, HTTP_AUTHORIZATION=f'Token {self.token}', format='json'
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {'success': True, 'data': [{
-            'id': 1,
-            'title': 'Product Base',
-            'brand': 'Some',
-            'image': 'https://placekitten.com/200/200',
-            'price': '59.99',
-            'review_score': None,
-        }], 'next_page': None, 'prev_page': None})
+        self.assertEqual(
+            response.json(),
+            {
+                'success': True,
+                'data': [
+                    {
+                        'id': 1,
+                        'title': 'Product Base',
+                        'brand': 'Some',
+                        'image': 'https://placekitten.com/200/200',
+                        'price': '59.99',
+                        'review_score': None,
+                    }
+                ],
+                'next_page': None,
+                'prev_page': None,
+            },
+        )
