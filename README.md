@@ -95,11 +95,10 @@ http://localhost:8000/admin/
 ## The REST API
 
 #### Add Client
+- POST /api/client/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 ```json
-POST /api/client/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-
 {
     "name": "Your Name",
     "email": "your_email@example.com"
@@ -107,18 +106,15 @@ Content-Type: application/json
 ```
 
 #### Load Client
-```json
-GET /api/client/[client_id]/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-```
+- GET /api/client/[client_id]/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 
 #### Edit Client
+- PUT /api/client/{client_id}/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 ```json
-PUT /api/client/{client_id}/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-
 {
     "name": "The New Name",
     "email": "new_email@example.com"
@@ -127,17 +123,15 @@ Content-Type: application/json
 ```
 
 #### Delete Client
-```json
-DELETE /api/client/[client_id]/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-```
+- DELETE /api/client/[client_id]/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 
 #### Add Product
+- POST /api/product/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 ```json
-POST /api/product/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
 {
     "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
     "brand": "Sony",
@@ -148,18 +142,15 @@ Content-Type: application/json
 
 ```
 #### Load Product
-
-```json
-GET /api/product/[product_id]/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-```
+- GET /api/product/[product_id]/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 
 #### Edit Product
+- PUT /api/product/[product_id]/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 ```json
-PUT /api/product/[product_id]/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
 {
     "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
     "brand": "Sony",
@@ -170,47 +161,39 @@ Content-Type: application/json
 ```
 
 #### Delete Product
-```json
-DELETE /api/product/[product_id]/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-```
-
+- DELETE /api/product/[product_id]/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 
 #### Add Favorite Product
+- POST /api/client/product/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 ```json
-POST /api/client/product/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-
 {
-    "client_id": [client_id],
-    "product_id": [product_id]
+    "client_id": 1,
+    "product_id": 1
 }
 ```
 
 #### Load Favorites Product
-```json
-GET /api/client/[client_id]/products/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-```
+- GET /api/client/[client_id]/products/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 
 If there is more than 3 products, is generated a pagination URL in the response:
-```json
-GET /api/client/[client_id]/products/?page=2
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-```
+- GET /api/client/[client_id]/products/?page=2
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
+
 
 #### Delete Favorite Product
+- DELETE /api/client/product/
+- Authorization: Token [TOKEN_GENERATED]
+- Content-Type: application/json
 ```json
-DELETE /api/client/product/
-Authorization: Token [TOKEN_GENERATED]
-Content-Type: application/json
-
 {
-    "client_id": [client_id],
-    "product_id": [product_id]
+    "client_id": 1,
+    "product_id": 1
 }
 ```
