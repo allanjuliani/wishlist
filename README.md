@@ -1,69 +1,107 @@
 ## How to install
 
-Is recommended to run the project:
+### Install Docker
 
-- Ubuntu 18.08 or later
-- Python 3.6 or later
-- MySQL 5.6 or later or SQLite 3.24 or later
+https://docs.docker.com/engine/install/
+
+### Build project
+
+```commandline
+make build 
+```
+
+### Start project
+
+```commandline
+make up
+```
+
+### Create superuser for admin
+
+```commandline
+make createsuperuser
+```
+
+### Run tests
+
+```commandline
+make tests
+```
+
+#### Links
+http://localhost:8000/admin/
+
+http://localhost:8000/
+
+#### Remove 
+```commandline
+make remove
+make clean
+```
+
+### Without Docker
 
 #### Ubuntu Dependencies
 
-`sudo apt-get install git python-virtualenv memcached libxml2-dev libxslt1-dev libevent-dev python-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y`
+```commandline
+sudo apt-get install git python-virtualenv memcached libxml2-dev libxslt1-dev libevent-dev python-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
+```
 
 #### Create the Virtualenv
-`cd ~/ && virtualenv wishlist --python=/usr/bin/python3 && mkdir wishlist/src && cd wishlist/src`
-
-#### Clone the Project
-`git clone https://github.com/allanjuliani/wishlist.git`
+```commandline
+virtualenv venv
+```
 
 #### Activate Virtualenv
-`source ~/wishlist/bin/activate`
+```commandline
+source venv/bin/activate
+```
 
 #### Install Python Dependencies
 
-`cd ~/wishlist/src/wishlist && pip install -r requirements.txt`
+```commandline
+pip install -r requirements.txt
+```
 
 #### Install Database
 
-Default is set SQLite. If you want to use MySQL, create the database:
-
-`CREATE DATABASE wishlist CHARACTER SET utf8 COLLATE utf8_general_ci;`
-
-Comment the lines 83 to 86 and uncomment the lines 88 to 97 on settings.py. Fill the default settings with your database configurations.  
-
-`./manage.py migrate`
+```commandline
+./manage.py migrate
+```
 
 #### Create admin user
 
-`./manage.py createsuperuser`
+```commandline
+./manage.py createsuperuser
+```
 
 #### Create API Token to your user
 
-`./manage.py drf_create_token [your user]`
+```commandline
+./manage.py drf_create_token [your user]
+```
 
 #### Test the application
 
-`./manage.py test`
+```commandline
+./manage.py test
+```
 
 #### Running the application
 
-`./manage.py runserver 0.0.0.0:8000` 
-
-or, start in english
-
-`make start_en`
-
-start in portuguese
-
-`make start_br`
+```commandline
+./manage.py runserver 0.0.0.0:8000 --settings=wishlist.settings_dev
+```
 
 #### Admin URL to access on browser
-`http://localhost:8000/admin/`
+```
+http://localhost:8000/admin/
+```
 
 ## The REST API
 
 #### Add Client
-```
+```json
 POST /api/client/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
@@ -75,14 +113,14 @@ Content-Type: application/json
 ```
 
 #### Load Client
-```
+```json
 GET /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
 #### Edit Client
-```
+```json
 PUT /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
@@ -95,14 +133,14 @@ Content-Type: application/json
 ```
 
 #### Delete Client
-```
+```json
 DELETE /api/client/[client_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
 #### Add Product
-```
+```json
 POST /api/product/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
@@ -117,14 +155,14 @@ Content-Type: application/json
 ```
 #### Load Product
 
-```
+```json
 GET /api/product/[product_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
 #### Edit Product
-```
+```json
 PUT /api/product/[product_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
@@ -138,7 +176,7 @@ Content-Type: application/json
 ```
 
 #### Delete Product
-```
+```json
 DELETE /api/product/[product_id]/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
@@ -146,7 +184,7 @@ Content-Type: application/json
 
 
 #### Add Favorite Product
-```
+```json
 POST /api/client/product/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
@@ -158,21 +196,21 @@ Content-Type: application/json
 ```
 
 #### Load Favorites Product
-```
+```json
 GET /api/client/[client_id]/products/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
 If there is more than 3 products, is generated a pagination URL in the response:
-```
+```json
 GET /api/client/[client_id]/products/?page=2
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 ```
 
 #### Delete Favorite Product
-```
+```json
 DELETE /api/client/product/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json

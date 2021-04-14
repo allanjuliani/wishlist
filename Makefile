@@ -20,6 +20,9 @@ clean:
 createsuperuser:
 	@docker exec -it django_wishlist python manage.py createsuperuser
 
+tests:
+	@docker exec -it django_wishlist python manage.py test
+
 shell-django:
 	@docker exec -it django_wishlist /bin/bash
 
