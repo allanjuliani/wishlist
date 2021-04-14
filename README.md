@@ -23,9 +23,9 @@ make createsuperuser
 ```
 
 #### Links
-http://localhost:8000/admin/
+http://localhost/admin/
 
-http://localhost:8000/
+http://localhost/
 
 #### Remove
 ```commandline
@@ -88,9 +88,7 @@ pip install -r requirements.txt
 ```
 
 #### Admin URL to access on browser
-```
 http://localhost:8000/admin/
-```
 
 ## The REST API
 
