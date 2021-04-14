@@ -22,12 +22,6 @@ make up
 make createsuperuser
 ```
 
-### Run tests
-
-```commandline
-make tests
-```
-
 #### Links
 http://localhost:8000/admin/
 
@@ -66,25 +60,25 @@ pip install -r requirements.txt
 #### Install Database
 
 ```commandline
-./manage.py migrate
+./manage.py migrate --settings=wishlist.settings_dev
 ```
 
 #### Create admin user
 
 ```commandline
-./manage.py createsuperuser
+./manage.py createsuperuser --settings=wishlist.settings_dev
 ```
 
 #### Create API Token to your user
 
 ```commandline
-./manage.py drf_create_token [your user]
+./manage.py drf_create_token [your user] --settings=wishlist.settings_dev
 ```
 
 #### Test the application
 
 ```commandline
-./manage.py test
+./manage.py test --settings=wishlist.settings_dev
 ```
 
 #### Running the application
