@@ -115,7 +115,7 @@ Content-Type: application/json
 
 #### Edit Client
 ```json
-PUT /api/client/[client_id]/
+PUT /api/client/{client_id}/
 Authorization: Token [TOKEN_GENERATED]
 Content-Type: application/json
 
