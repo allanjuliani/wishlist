@@ -5,27 +5,22 @@
 https://docs.docker.com/engine/install/
 
 ### Build project
-
 ```commandline
 make build
 ```
 
 ### Start project
-
 ```commandline
 make up
 ```
 
 ### Create superuser for admin
-
 ```commandline
 make createsuperuser
 ```
 
-#### Links
+#### Admin URL to access on browser
 http://localhost/admin/
-
-http://localhost/
 
 #### Remove
 ```commandline
@@ -36,7 +31,6 @@ make clean
 ### Without Docker
 
 #### Ubuntu Dependencies
-
 ```commandline
 sudo apt-get install git python-virtualenv memcached libxml2-dev libxslt1-dev libevent-dev python-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
 ```
