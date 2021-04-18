@@ -19,6 +19,11 @@ make up
 make createsuperuser
 ```
 
+### Create token to rest api
+```commandline
+make createtoken username=[YOUR_USER]
+```
+
 #### Admin URL to access on browser
 http://localhost/admin/
 
@@ -66,7 +71,7 @@ pip install -r requirements.txt
 #### Create API Token to your user
 
 ```commandline
-./manage.py drf_create_token [your user] --settings=wishlist.settings_dev
+./manage.py drf_create_token [YOUR_USER] --settings=wishlist.settings_dev
 ```
 
 #### Test the application
