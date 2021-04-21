@@ -8,10 +8,11 @@ services:
       - .:/home/ubuntu/wishlist
     depends_on:
       - mysql
+    env_file:
+      - .env
+  # https://hub.docker.com/_/nginx
   nginx:
     container_name: nginx_wishlist
-    # build:
-    #   context: ./.docker/nginx
     image: nginx:1.19
     ports:
       - "80:80"
@@ -22,6 +23,7 @@ services:
       - ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - django
+  # https://hub.docker.com/_/mysql
   mysql:
     image: mysql:8.0
     container_name: mysql_wishlist

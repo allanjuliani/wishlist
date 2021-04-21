@@ -14,8 +14,13 @@ rebuild:
 remove:
 	@docker-compose down --volumes --remove-orphans
 
-clean:
+wishlist-clean:
+	@make stop
 	@docker image rm django_wishlist
+
+docker-clean:
+	@make stop
+	@docker system prune -a
 
 createsuperuser:
 	@docker exec -it django_wishlist python manage.py createsuperuser

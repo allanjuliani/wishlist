@@ -6,5 +6,5 @@ CACHE/
 media/
 venv/
 .venv/
-static/admin/
-static/rest_framework/
+.env
+static/
