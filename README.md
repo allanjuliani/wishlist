@@ -29,8 +29,8 @@ http://localhost/admin/
 
 #### Remove
 ```commandline
-make remove
-make clean
+make wishlist-remove
+make wishlist-clean
 ```
 
 ### Without Docker
