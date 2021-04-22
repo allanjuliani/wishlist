@@ -7,6 +7,10 @@ up:
 stop:
 	@docker-compose down
 
+restart:
+	@make stop
+	@make up
+
 rebuild:
 	@docker-compose down --remove-orphans
 	@docker-compose build --no-cache
@@ -21,6 +25,7 @@ wishlist-clean:
 docker-clean:
 	@make stop
 	@docker system prune -a
+	@docker volume prune
 
 createsuperuser:
 	@docker exec -it django_wishlist python manage.py createsuperuser
