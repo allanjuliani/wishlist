@@ -15,7 +15,7 @@ rebuild:
 	@docker-compose down --remove-orphans
 	@docker-compose build --no-cache
 
-remove:
+wishlist-remove:
 	@docker-compose down --volumes --remove-orphans
 
 wishlist-clean:
