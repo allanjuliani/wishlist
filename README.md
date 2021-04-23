@@ -1,4 +1,6 @@
-## How to install
+# Django Wishlist
+
+## Using Docker
 
 ### Install Docker
 
@@ -12,6 +14,11 @@ make build
 ### Start project
 ```commandline
 make up
+```
+
+### Run tests
+```commandline
+make tests
 ```
 
 ### Create superuser for admin

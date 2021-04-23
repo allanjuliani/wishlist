@@ -5,6 +5,6 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'test.sqlite3',
+        'NAME': BASE_DIR / 'wishlist.sqlite3',
     }
 }

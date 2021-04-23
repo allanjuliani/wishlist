@@ -27,6 +27,9 @@ docker-clean:
 	@docker system prune -a
 	@docker volume prune
 
+tests:
+	@docker exec -it django_wishlist python manage.py test --settings=wishlist.settings_test
+
 createsuperuser:
 	@docker exec -it django_wishlist python manage.py createsuperuser
 
