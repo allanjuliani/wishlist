@@ -12,10 +12,8 @@ RUN useradd -ms /bin/bash django
 
 USER django
 
-COPY . /home/django/wishlist
+ADD . /home/django/wishlist
 
 WORKDIR /home/django/wishlist
-
-# RUN pip install -r requirements.txt
 
 ENTRYPOINT [".docker/django/entrypoint.sh"]

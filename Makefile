@@ -1,8 +1,14 @@
 build:
+	@cp .env.example .env
+
 	@docker-compose build
 
 up:
 	@docker-compose up -d
+
+install:
+	@make build
+	@make up
 
 stop:
 	@docker-compose down
