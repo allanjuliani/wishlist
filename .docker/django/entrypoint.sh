@@ -1,11 +1,8 @@
-#! /bin/bash
-
-cd /home/ubuntu/wishlist
+#!/bin/bash
 
 pip install -r requirements.txt
 
-# su ubuntu --command "./manage.py collectstatic"
-./manage.py collectstatic
-./manage.py migrate
+./manage.py collectstatic --noinput
+./manage.py migrate --settings=wishlist.settings_prod
 
-.docker/django/gunicorn.conf
+.docker/django/gunicorn.sh

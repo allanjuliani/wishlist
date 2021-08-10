@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: ./.docker/django/Dockerfile
     volumes:
-      - .:/home/ubuntu/wishlist
+      - .:/home/django/wishlist
     env_file:
       - .env
     depends_on:
@@ -49,8 +49,8 @@ services:
       - my-db:/var/lib/mysql
     healthcheck:
       test: "mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD"
-      interval: 1s
-      timeout: 2s
+      interval: 5s
+      timeout: 5s
       retries: 5
 volumes:
   my-db:

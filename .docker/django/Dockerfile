@@ -8,14 +8,14 @@ RUN apt-get install default-libmysqlclient-dev build-essential -y
 
 RUN python3 -m pip install --upgrade pip
 
-RUN useradd -ms /bin/bash ubuntu
+RUN useradd -ms /bin/bash django
 
-USER ubuntu
+USER django
 
-COPY . /home/ubuntu/wishlist
+COPY . /home/django/wishlist
 
-WORKDIR /home/ubuntu/wishlist
+WORKDIR /home/django/wishlist
 
-RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt
 
 ENTRYPOINT [".docker/django/entrypoint.sh"]
