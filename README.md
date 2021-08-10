@@ -8,14 +8,9 @@ https://docs.docker.com/engine/install/
 
 https://docs.docker.com/compose/install/
 
-### Build project
+### Install project
 ```commandline
-make build
-```
-
-### Start project
-```commandline
-make up
+make install
 ```
 
 ### Run tests
@@ -30,17 +25,11 @@ make createsuperuser
 
 ### Create token to rest api
 ```commandline
-make createtoken username=[YOUR_USER]
+make createtoken username=admin
 ```
 
 #### Admin URL to access on browser
 http://localhost/admin/
-
-#### Remove
-```commandline
-make wishlist-remove
-make wishlist-clean
-```
 
 ### Without Docker
 
