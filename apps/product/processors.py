@@ -1,7 +1,7 @@
 from django.utils.translation import gettext as _
 
-from product.forms import ProductForm
-from product.models import Product
+from apps.product.forms import ProductForm
+from apps.product.models import Product
 
 
 def product_create(request_body):

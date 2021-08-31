@@ -19,6 +19,7 @@ make tests
 ```
 
 ### Create superuser for admin
+This command will create a user based on environment var defined at .env file
 ```commandline
 make createsuperuser
 ```
@@ -91,40 +92,39 @@ http://localhost:8000/admin/
 
 #### Add Client
 - POST /api/client/
-- Authorization: Token [TOKEN_GENERATED]
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
 {
-    "name": "Your Name",
-    "email": "your_email@example.com"
+    "name": "Client Name",
+    "email": "clientemail@example.com"
 }
 ```
 
 #### Load Client
-- GET /api/client/[client_id]/
-- Authorization: Token [TOKEN_GENERATED]
+- GET /api/client/{{client_id}}/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 #### Edit Client
-- PUT /api/client/{client_id}/
-- Authorization: Token [TOKEN_GENERATED]
+- PUT /api/client/{{client_id}}/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
 {
     "name": "The New Name",
     "email": "new_email@example.com"
 }
-
 ```
 
 #### Delete Client
-- DELETE /api/client/[client_id]/
-- Authorization: Token [TOKEN_GENERATED]
+- DELETE /api/client/{{client_id}}/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 #### Add Product
 - POST /api/product/
-- Authorization: Token [TOKEN_GENERATED]
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
 {

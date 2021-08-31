@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
 
-from product.models import Product
+from apps.product.models import Product
 
 
 @admin.register(Product)

@@ -4,7 +4,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.utils.translation import gettext as _
 
-from product.models import Product
+from apps.product.models import Product
 
 
 class Client(models.Model):
@@ -19,7 +19,7 @@ class Client(models.Model):
         verbose_name_plural = _('Clients')
 
     def __str__(self):
-        return self.name
+        return self.name or ''
 
     def save(self, *args, **kwargs):
         validate_email(self.email)

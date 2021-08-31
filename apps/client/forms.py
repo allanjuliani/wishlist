@@ -1,6 +1,6 @@
 from django import forms
 
-from client.models import Client
+from apps.client.models import Client
 
 
 class ClientForm(forms.ModelForm):

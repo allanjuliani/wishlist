@@ -12,7 +12,7 @@ RUN useradd -ms /bin/bash django
 
 USER django
 
-ADD . /home/django/wishlist
+COPY . /home/django/wishlist
 
 WORKDIR /home/django/wishlist
 

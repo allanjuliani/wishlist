@@ -3,5 +3,5 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class ApiConfig(AppConfig):
-    name = 'api'
+    name = 'apps.api'
     verbose_name = _('API')

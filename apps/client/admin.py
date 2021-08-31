@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
 
-from client.models import Client
+from apps.client.models import Client
 
 
 @admin.register(Client)

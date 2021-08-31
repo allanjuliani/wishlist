@@ -1,8 +1,8 @@
 from django.utils.translation import gettext as _
 
-from client.forms import ClientForm
-from client.models import Client
-from product.models import Product
+from apps.client.forms import ClientForm
+from apps.client.models import Client
+from apps.product.models import Product
 
 
 def client_create(request_body):

@@ -5,8 +5,8 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
-from client.models import Client
-from product.models import Product
+from apps.client import Client
+from apps.product import Product
 
 
 class ApiTest(APITestCase):

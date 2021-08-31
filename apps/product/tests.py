@@ -1,7 +1,7 @@
 from django.db import IntegrityError
 from django.test import TestCase
 
-from product.models import Product
+from apps.product.models import Product
 
 
 class ProductTestCase(TestCase):

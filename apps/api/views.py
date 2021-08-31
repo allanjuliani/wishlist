@@ -5,76 +5,63 @@ from django.core.cache import cache
 from django.http import JsonResponse
 from django.urls import reverse
 from django.utils.translation import gettext as _
+from rest_framework import authentication, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from client.models import Client
-from client.processors import (client_create, client_delete, client_get,
-                               client_update, favorite_create, favorite_remove)
-from product.models import Product
-from product.processors import (product_create, product_delete, product_get,
-                                product_update)
-
-
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def client_add(request):
-    context = {}
-
-    # Get Json from request body
-    try:
-        request_body = json.loads(request.body)
-
-    # If Json is not valid
-    except JSONDecodeError:
-        context = {
-            'success': False,
-            'message': _('Invalid body format. Must be a valid Json'),
-        }
-
-    # With a valid json
-    else:
-        request_body['email'] = request_body.get('email').lower()
-
-        # Get or create User, using Django Forms
-        context = client_create(request_body)
-
-    # Return json request
-    finally:
-        return JsonResponse(context, safe=False)
+from apps.client.models import Client
+from apps.client.processors import favorite_create, favorite_remove
+from apps.client.serializers import ClientSerializer
+from apps.product.models import Product
+from apps.product.processors import (product_create, product_delete,
+                                     product_get, product_update)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
-def client_management(request, client_id):
-    context = {}
+class NotFound(Response):
+    def __init__(self, message):
+        super().__init__(data={"message": message}, status=status.HTTP_404_NOT_FOUND)
 
-    # Delete client
-    if request.method == 'DELETE':
-        context = client_delete(client_id)
 
-    # Load client
-    elif request.method == 'GET':
-        context = client_get(client_id)
+class ClientView(APIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    model = Client
+    serializer = ClientSerializer
 
-    # Update client
-    elif request.method == 'PUT':
-        # Get Json from request body
-        try:
-            request_body = json.loads(request.body)
-
-        # If Json is not valid
-        except json.JSONDecodeError:
-            context = {
-                'success': False,
-                'message': _('Invalid body format. Must be a valid Json'),
-            }
-
-        # With a valid json
+    def delete(self, request, client_id):
+        queryset = self.model.objects.filter(id=client_id).first()
+        if queryset:
+            serializer = self.serializer(queryset)
+            queryset.delete()
+            return Response(serializer.data)
         else:
-            context = client_update(client_id, request_body)
+            return NotFound(_('Client not found'))
 
-    return JsonResponse(context, safe=False)
+    def get(self, request, client_id=None):
+        queryset = (
+            self.model.objects.filter(id=client_id)
+            if client_id
+            else Client.objects.all()
+        )
+        serializer = self.serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = self.serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status.HTTP_201_CREATED)
+
+    def put(self, request, client_id):
+        queryset = Client.objects.filter(id=client_id).first()
+        if queryset:
+            serializer = self.serializer(queryset, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return NotFound(_('Client not found'))
 
 
 @api_view(['DELETE', 'POST'])
