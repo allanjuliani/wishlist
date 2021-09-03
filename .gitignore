@@ -1,11 +1,13 @@
 *.pyc
-.idea/
+
 *.sqlite3
 __pycache__/
 CACHE/
 media/
 venv/
+.idea/
 .venv/
 .env
+.coverage
 /static/
 cov.xml
