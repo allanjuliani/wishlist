@@ -16,7 +16,7 @@ services:
       test: "exit 0"
       interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 15
   # https://hub.docker.com/_/nginx
   nginx:
     image: nginx:1.19
@@ -51,6 +51,6 @@ services:
       test: "mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD"
       interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 15
 volumes:
   my-db:
