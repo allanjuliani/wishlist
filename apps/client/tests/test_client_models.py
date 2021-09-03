@@ -12,4 +12,4 @@ class TestClientModels(TestCase):
         )
 
     def test_client_str(self):
-        self.assertEqual(str(self.client), "Client Name - clientemail@example.com")
+        self.assertEqual(str(self.client), 'Client Name - clientemail@example.com')

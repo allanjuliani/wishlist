@@ -3,6 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class ClientConfig(AppConfig):
-    default_auto_field = "django.db.models.AutoField"
+    default_auto_field = 'django.db.models.AutoField'
     name = 'apps.client'
     verbose_name = _('Client')

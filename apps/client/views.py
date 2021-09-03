@@ -1,4 +1,3 @@
-# from django.core.cache import cache
 from django.utils.translation import gettext as _
 from rest_framework import authentication, status
 from rest_framework.response import Response
@@ -10,7 +9,7 @@ from apps.client.serializers import ClientSerializer
 
 class NotFound(Response):
     def __init__(self, message):
-        super().__init__(data={"message": message}, status=status.HTTP_404_NOT_FOUND)
+        super().__init__(data={'message': message}, status=status.HTTP_404_NOT_FOUND)
 
 
 class ClientView(APIView):
@@ -33,8 +32,11 @@ class ClientView(APIView):
             if client_id
             else self.model.objects.all()
         )
-        serializer = self.serializer(queryset, many=True)
-        return Response(serializer.data)
+        if queryset:
+            serializer = self.serializer(queryset, many=True)
+            return Response(serializer.data)
+        else:
+            return NotFound(_('Client not found'))
 
     def post(self, request):
         serializer = self.serializer(data=request.data)
