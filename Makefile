@@ -1,25 +1,34 @@
 build:
 	@cp .env.example .env
-
 	@docker-compose build
+
+rebuild:
+	@docker-compose down --remove-orphans
+	@docker-compose build --no-cache
 
 up:
 	@docker-compose up -d
+
+down:
+	@docker-compose down
 
 install:
 	@make build
 	@make up
 
+start:
+	@docker start django_wishlist
+	@docker start mysql_wishlist
+	@docker start nginx_wishlist
+
 stop:
-	@docker-compose down
+	@docker stop django_wishlist
+	@docker stop mysql_wishlist
+	@docker stop nginx_wishlist
 
 restart:
 	@make stop
 	@make up
-
-rebuild:
-	@docker-compose down --remove-orphans
-	@docker-compose build --no-cache
 
 wishlist-remove:
 	@docker-compose down --volumes --remove-orphans
