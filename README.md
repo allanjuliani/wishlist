@@ -18,6 +18,11 @@ make install
 make tests
 ```
 
+### Show coverage
+```commandline
+make cov
+```
+
 ### Create superuser for admin
 This command will create a user based on environment var defined at .env file
 ```commandline
@@ -70,7 +75,7 @@ pip install -r requirements.txt
 #### Create API Token to your user
 
 ```commandline
-./manage.py drf_create_token [YOUR_USER] --settings=wishlist.settings_dev
+./manage.py drf_create_token {{YOUR_USER}} --settings=wishlist.settings_dev
 ```
 
 #### Test the application
@@ -91,7 +96,7 @@ http://localhost:8000/admin/
 ## The REST API
 
 #### Add Client
-- POST /api/client/
+- POST /client/
 - Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
@@ -102,12 +107,12 @@ http://localhost:8000/admin/
 ```
 
 #### Load Client
-- GET /api/client/{{client_id}}/
+- GET /client/{{client_id}}/
 - Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 #### Edit Client
-- PUT /api/client/{{client_id}}/
+- PUT /client/{{client_id}}/
 - Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
@@ -118,12 +123,12 @@ http://localhost:8000/admin/
 ```
 
 #### Delete Client
-- DELETE /api/client/{{client_id}}/
+- DELETE /client/{{client_id}}/
 - Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 #### Add Product
-- POST /api/product/
+- POST /product/
 - Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
@@ -137,13 +142,13 @@ http://localhost:8000/admin/
 
 ```
 #### Load Product
-- GET /api/product/[product_id]/
-- Authorization: Token [TOKEN_GENERATED]
+- GET /product/{{product_id}}/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 #### Edit Product
-- PUT /api/product/[product_id]/
-- Authorization: Token [TOKEN_GENERATED]
+- PUT /product/{{product_id}}/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
 {
@@ -156,13 +161,13 @@ http://localhost:8000/admin/
 ```
 
 #### Delete Product
-- DELETE /api/product/[product_id]/
-- Authorization: Token [TOKEN_GENERATED]
+- DELETE /product/{{product_id}}/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 #### Add Favorite Product
-- POST /api/client/product/
-- Authorization: Token [TOKEN_GENERATED]
+- POST /client/product/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
 {
@@ -172,19 +177,19 @@ http://localhost:8000/admin/
 ```
 
 #### Load Favorites Product
-- GET /api/client/[client_id]/products/
-- Authorization: Token [TOKEN_GENERATED]
+- GET /client/{{client_id}}/products/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 If there is more than 3 products, is generated a pagination URL in the response:
-- GET /api/client/[client_id]/products/?page=2
-- Authorization: Token [TOKEN_GENERATED]
+- GET /client/{{client_id}}/products/?page=2
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 
 
 #### Delete Favorite Product
-- DELETE /api/client/product/
-- Authorization: Token [TOKEN_GENERATED]
+- DELETE /client/product/
+- Authorization: Token {{AUTHORIZATION_TOKEN}}
 - Content-Type: application/json
 ```json
 {
