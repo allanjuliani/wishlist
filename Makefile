@@ -28,17 +28,15 @@ stop:
 
 restart:
 	@make stop
-	@make up
-
-wishlist-remove:
-	@docker-compose down --volumes --remove-orphans
+	@make start
 
 wishlist-clean:
-	@make stop
-	@docker image rm django_wishlist
+	@make down
+	@docker image rm wishlist_django
+	@docker volume rm wishlist_my-db
 
 docker-clean:
-	@make stop
+	@make down
 	@docker system prune -a
 	@docker volume prune
 
