@@ -13,9 +13,8 @@ services:
       mysql:
         condition: service_healthy
     healthcheck:
-      test: "exit 0"
-      interval: 5s
-      timeout: 5s
+      test: "curl -sS http://localhost:8000 || exit 1"
+      timeout: 30s
       retries: 15
   # https://hub.docker.com/_/nginx
   nginx:
@@ -49,8 +48,7 @@ services:
       - my-db:/var/lib/mysql
     healthcheck:
       test: "mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD"
-      interval: 5s
-      timeout: 5s
+      timeout: 30s
       retries: 15
 volumes:
   my-db:
