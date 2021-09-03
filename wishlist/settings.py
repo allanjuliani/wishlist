@@ -41,10 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'django_seed',
+    # 'django_seed',
     'apps.client',
     'apps.product',
-    'apps.api',
 ]
 
 MIDDLEWARE = [
