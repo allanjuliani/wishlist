@@ -11,7 +11,7 @@ class TestClientViews(TestCase):
 
     def setUp(self):
         user = User.objects.create(username='tester', is_superuser=True, is_staff=True)
-        self.token, created = Token.objects.get_or_create(user=user)
+        self.token = Token.objects.create(user=user)
         self.authorization_token = self.token.key
         data = {
             'name': 'Client Name',
@@ -46,12 +46,14 @@ class TestClientViews(TestCase):
             response_data.pop('created')
 
         self.assertEquals(
-            responses_data[0],
-            {
-                'id': 1,
-                'name': 'Client Name',
-                'email': 'clientemail@example.com',
-            },
+            responses_data,
+            [
+                {
+                    'id': 1,
+                    'name': 'Client Name',
+                    'email': 'clientemail@example.com',
+                },
+            ],
         )
 
     def test_client_view_not_found(self):

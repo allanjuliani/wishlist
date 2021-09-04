@@ -23,14 +23,3 @@ class Client(models.Model):
         validate_email(self.email)
         self.email = self.email.lower()
         super().save(*args, **kwargs)
-
-
-# Clear user get cache on add or remove product
-# @receiver(models.signals.m2m_changed)
-# def clean_user_cache(sender, instance, **kwargs):
-#     if kwargs.get('action') in ['post_add', 'post_remove']:
-#         for i in range(1, 999):
-#             if cache.get(f'client_get_{instance.id}_{i}'):
-#                 cache.delete(f'client_get_{instance.id}_{i}')
-#             else:
-#                 break

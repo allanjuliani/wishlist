@@ -18,14 +18,15 @@ class TestClientForms(TestCase):
 
         if client_form.is_valid():
             client_form.save()
-            dict_base = [
+            dict_that_should_return = [
                 {
                     'id': 1,
                     'name': 'Client Name',
                     'email': 'clientemail@example.com',
                 }
             ]
-            queryset = self.model.objects.values('id', 'name', 'email').all()
+            queryset = self.model.objects.values().all()
             dict_from_queryset = [entry for entry in queryset]
+            dict_from_queryset[0].pop('created')
             self.assertEquals(self.model.objects.all().count(), 1)
-            self.assertEqual(dict_from_queryset, dict_base)
+            self.assertEqual(dict_from_queryset, dict_that_should_return)

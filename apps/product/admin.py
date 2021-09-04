@@ -21,10 +21,7 @@ class ProductAdmin(admin.ModelAdmin):
     clients_link.short_description = _('Clients')
 
     def image_preview(self, obj):
-        if obj.image:
-            return format_html('<img width="100" src="{path}">', path=obj.image)
-        else:
-            '-'
+        return format_html('<img width="100" src="{path}">', path=obj.image)
 
     image_preview.short_description = _('Image')
     image_preview.admin_order_field = 'image'
