@@ -99,11 +99,11 @@ pytest apps/ --cov=apps/
 #### Admin URL to access on browser
 http://localhost:8000/admin/
 
-## The REST API
+## REST API endpoints
 
 #### Add Client
 - POST /client/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -113,13 +113,13 @@ http://localhost:8000/admin/
 ```
 
 #### Load Client
-- GET /client/{{client_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /client/`{{client_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 #### Edit Client
-- PUT /client/{{client_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- PUT /client/`{{client_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -129,13 +129,13 @@ http://localhost:8000/admin/
 ```
 
 #### Delete Client
-- DELETE /client/{{client_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- DELETE /client/`{{client_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 #### Add Product
 - POST /product/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -148,13 +148,13 @@ http://localhost:8000/admin/
 
 ```
 #### Load Product
-- GET /product/{{product_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /product/`{{product_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 #### Edit Product
-- PUT /product/{{product_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- PUT /product/`{{product_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -167,13 +167,13 @@ http://localhost:8000/admin/
 ```
 
 #### Delete Product
-- DELETE /product/{{product_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- DELETE /product/`{{product_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 #### Add Favorite Product
 - POST /client/product/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -183,19 +183,19 @@ http://localhost:8000/admin/
 ```
 
 #### Load Favorites Product
-- GET /client/{{client_id}}/products/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /client/`{{client_id}}`/products/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 If there is more than 3 products, is generated a pagination URL in the response:
-- GET /client/{{client_id}}/products/?page=2
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /client/`{{client_id}}`/products/?page=2
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 
 #### Delete Favorite Product
 - DELETE /client/product/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
