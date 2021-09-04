@@ -133,10 +133,10 @@ http://localhost:8000/admin/
 - Content-Type: application/json
 ```json
 {
-    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
-    "brand": "Sony",
-    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
-    "price": 188.89,
+    "title": "Product Name",
+    "brand": "Brand New",
+    "image": "https://dummyimage.com/300",
+    "price": 99.99,
     "review_score": 5
 }
 
@@ -152,11 +152,11 @@ http://localhost:8000/admin/
 - Content-Type: application/json
 ```json
 {
-    "title": "Carregador Sony com 8 Pilhas Kit 4 AA + 4 AAA Recarregável",
-    "brand": "Sony",
-    "image": "https://a-static.mlcdn.com.br/618x463/carregador-sony-com-8-pilhas-kit-4-aa-4-aaa-recarregavel/vitrinedosimportados/26386/e402cd8f4e0e0a24ed2f43d0896370fd.jpg",
-    "price": 159.99,
-    "review_score": 4
+    "title": "Product New Name",
+    "brand": "Brand New",
+    "image": "https://dummyimage.com/300",
+    "price": 199.99,
+    "review_score": 5
 }
 ```
 
