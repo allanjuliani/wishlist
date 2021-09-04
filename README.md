@@ -39,19 +39,19 @@ http://localhost/admin/
 
 ### Without Docker
 
-#### Ubuntu Dependencies
+#### Ubuntu 20.04 Dependencies
 ```commandline
-sudo apt-get install git python-virtualenv memcached libxml2-dev libxslt1-dev libevent-dev python-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
+sudo apt-get install git python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
 ```
 
 #### Create the Virtualenv
 ```commandline
-virtualenv venv
+virtualenv .venv
 ```
 
 #### Activate Virtualenv
 ```commandline
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 #### Install Python Dependencies
@@ -81,7 +81,13 @@ pip install -r requirements.txt
 #### Test the application
 
 ```commandline
-./manage.py test --settings=wishlist.settings_dev
+pytest apps/
+```
+
+#### Show coverage
+
+```commandline
+pytest apps/ --cov=apps/
 ```
 
 #### Running the application
