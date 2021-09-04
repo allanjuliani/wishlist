@@ -39,19 +39,19 @@ http://localhost/admin/
 
 ### Without Docker
 
-#### Ubuntu Dependencies
+#### Ubuntu 20.04 Dependencies
 ```commandline
-sudo apt-get install git python-virtualenv memcached libxml2-dev libxslt1-dev libevent-dev python-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
+sudo apt-get install git build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
 ```
 
 #### Create the Virtualenv
 ```commandline
-virtualenv venv
+virtualenv .venv
 ```
 
 #### Activate Virtualenv
 ```commandline
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 #### Install Python Dependencies
@@ -81,7 +81,13 @@ pip install -r requirements.txt
 #### Test the application
 
 ```commandline
-./manage.py test --settings=wishlist.settings_dev
+pytest apps/
+```
+
+#### Show coverage
+
+```commandline
+pytest apps/ --cov=apps/
 ```
 
 #### Running the application
@@ -93,11 +99,11 @@ pip install -r requirements.txt
 #### Admin URL to access on browser
 http://localhost:8000/admin/
 
-## The REST API
+## REST API endpoints
 
 #### Add Client
 - POST /client/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -107,13 +113,18 @@ http://localhost:8000/admin/
 ```
 
 #### Load Client
-- GET /client/{{client_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /client/`{{client_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
-#### Edit Client
-- PUT /client/{{client_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+#### Load Clients
+- GET /client/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
+- Content-Type: application/json
+
+#### Update Client
+- PUT /client/`{{client_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -123,13 +134,13 @@ http://localhost:8000/admin/
 ```
 
 #### Delete Client
-- DELETE /client/{{client_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- DELETE /client/`{{client_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 #### Add Product
 - POST /product/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -141,14 +152,20 @@ http://localhost:8000/admin/
 }
 
 ```
+
 #### Load Product
-- GET /product/{{product_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /product/`{{product_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
-#### Edit Product
-- PUT /product/{{product_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+#### Load Products
+- GET /product/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
+- Content-Type: application/json
+
+#### Update Product
+- PUT /product/`{{product_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -161,13 +178,13 @@ http://localhost:8000/admin/
 ```
 
 #### Delete Product
-- DELETE /product/{{product_id}}/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- DELETE /product/`{{product_id}}`/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 #### Add Favorite Product
 - POST /client/product/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
@@ -177,19 +194,19 @@ http://localhost:8000/admin/
 ```
 
 #### Load Favorites Product
-- GET /client/{{client_id}}/products/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /client/`{{client_id}}`/products/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 If there is more than 3 products, is generated a pagination URL in the response:
-- GET /client/{{client_id}}/products/?page=2
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- GET /client/`{{client_id}}`/products/?page=2
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
 
 #### Delete Favorite Product
 - DELETE /client/product/
-- Authorization: Token {{AUTHORIZATION_TOKEN}}
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
