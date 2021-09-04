@@ -117,7 +117,12 @@ http://localhost:8000/admin/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
-#### Edit Client
+#### Load Clients
+- GET /client/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
+- Content-Type: application/json
+
+#### Update Client
 - PUT /client/`{{client_id}}`/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
@@ -147,12 +152,18 @@ http://localhost:8000/admin/
 }
 
 ```
+
 #### Load Product
 - GET /product/`{{product_id}}`/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
-#### Edit Product
+#### Load Products
+- GET /product/
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
+- Content-Type: application/json
+
+#### Update Product
 - PUT /product/`{{product_id}}`/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
