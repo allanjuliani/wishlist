@@ -59,7 +59,10 @@ source .venv/bin/activate
 ```commandline
 pip install -r requirements.txt
 ```
-
+#### Export env variables
+```commandline
+export $(cat .env.example | xargs)
+```
 #### Install Database
 
 ```commandline
@@ -69,7 +72,7 @@ pip install -r requirements.txt
 #### Create admin user
 
 ```commandline
-./manage.py createsuperuser --settings=wishlist.settings_dev
+./manage.py createsuperuser --noinput --settings=wishlist.settings_dev
 ```
 
 #### Create API Token to your user
