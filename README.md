@@ -41,7 +41,7 @@ http://localhost/admin/
 
 #### Ubuntu 20.04 Dependencies
 ```commandline
-sudo apt-get install git python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
+sudo apt-get install git build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
 ```
 
 #### Create the Virtualenv
