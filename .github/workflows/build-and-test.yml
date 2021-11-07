@@ -18,25 +18,22 @@ jobs:
       with:
         python-version: '3.9'
     - name: Install dependencies
-
       run: |
-        echo $SECRET_KEY
-
-#        sudo apt-get install git build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
-#        python -m pip install --upgrade pip
-#        pip install setuptools wheel twine
-#    - name: Create the Virtualenv
-#      run: |
-#        virtualenv .venv
-#    - name: Activate Virtualenv
-#      run: |
-#        source .venv/bin/activate
-#    - name: Install Python Dependencies
-#      run: |
-#        pip install -r requirements.txt
-#    - name: Install Database
-#      run: |
-#        ./manage.py migrate --settings=wishlist.settings_dev
-#    - name: Test the application
-#      run: |
-#        pytest apps/
+        sudo apt-get install git build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+    - name: Create the Virtualenv
+      run: |
+        virtualenv .venv
+    - name: Activate Virtualenv
+      run: |
+        source .venv/bin/activate
+    - name: Install Python Dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Install Database
+      run: |
+        ./manage.py migrate --settings=wishlist.settings_dev
+    - name: Test the application
+      run: |
+        pytest apps/
