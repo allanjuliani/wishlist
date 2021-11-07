@@ -36,9 +36,11 @@ jobs:
     - name: Test the application
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}a
+        ALLAN: ${{ secrets.ALLAN }}a
       run: |
         echo Olar
         echo $SECRET_KEY
+        echo $ALLAN
         echo Xau
         pytest apps/
 #    - name: Build and publish
