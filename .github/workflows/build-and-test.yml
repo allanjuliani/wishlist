@@ -36,7 +36,7 @@ jobs:
     - name: Test the application
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}a
-        ALLAN: ${{ secrets.ALLAN }}a
+        ALLAN: ${{ env.ALLAN }}a
       run: |
         echo Olar
         echo $SECRET_KEY
