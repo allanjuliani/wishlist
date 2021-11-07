@@ -6,6 +6,7 @@ on:
 
 jobs:
   building:
+    name: Building
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -24,6 +25,15 @@ jobs:
     - name: Activate Virtualenv
       run: |
         source .venv/bin/activate
+    - name: Install Python Dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Export env variables
+      run: |
+        export $(cat .env.example | xargs)
+    - name: Install Database
+      run: |
+        ./manage.py migrate --settings=wishlist.settings_dev
 #    - name: Build and publish
 #      env:
 #        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
