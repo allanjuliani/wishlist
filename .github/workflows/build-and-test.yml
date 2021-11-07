@@ -18,40 +18,23 @@ jobs:
         python-version: '3.9'
     - name: Install dependencies
       run: |
-        sudo apt-get install git build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
-        python -m pip install --upgrade pip
-        pip install setuptools wheel twine
-    - name: Create the Virtualenv
-      run: |
-        virtualenv .venv
-    - name: Activate Virtualenv
-      run: |
-        source .venv/bin/activate
-    - name: Install Python Dependencies
-      run: |
-        pip install -r requirements.txt
+        echo $SECRET_KEY
+
+#        sudo apt-get install git build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
+#        python -m pip install --upgrade pip
+#        pip install setuptools wheel twine
+#    - name: Create the Virtualenv
+#      run: |
+#        virtualenv .venv
+#    - name: Activate Virtualenv
+#      run: |
+#        source .venv/bin/activate
+#    - name: Install Python Dependencies
+#      run: |
+#        pip install -r requirements.txt
 #    - name: Install Database
-#      env:
-#        SECRET_KEY: ${{ secrets.SECRET_KEY }}
 #      run: |
 #        ./manage.py migrate --settings=wishlist.settings_dev
-    - name: Test the application
-
-      run: |
-        echo Olar
-        echo $SECRET_KEY
-        echo $ALLAN
-        echo $LOCAL
-        echo Xau
-        pytest apps/
-      env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        ALLAN: ${{ env.ALLAN }}
-        LOCAL: LOCAL
-#    - name: Build and publish
-#      env:
-#        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-#        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+#    - name: Test the application
 #      run: |
-#        python setup.py sdist bdist_wheel
-#        twine upload dist/*
+#        pytest apps/
