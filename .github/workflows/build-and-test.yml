@@ -7,11 +7,13 @@ on:
 jobs:
   building:
     name: Building
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
+      env:
+        SECRET_KEY: workflow
       with:
         python-version: '3.9'
     - name: Install dependencies
