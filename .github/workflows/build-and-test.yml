@@ -35,8 +35,11 @@ jobs:
 #        ./manage.py migrate --settings=wishlist.settings_dev
     - name: Test the application
       env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}a
       run: |
+        echo Olar
+        echo $SECRET_KEY
+        echo Xau
         pytest apps/
 #    - name: Build and publish
 #      env:
