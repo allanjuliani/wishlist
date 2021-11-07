@@ -28,11 +28,14 @@ jobs:
     - name: Install Python Dependencies
       run: |
         pip install -r requirements.txt
-    - name: Install Database
-      env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#    - name: Install Database
+#      env:
+#        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#      run: |
+#        ./manage.py migrate --settings=wishlist.settings_dev
+    - name: Test the application
       run: |
-        ./manage.py migrate --settings=wishlist.settings_dev
+        pytest apps/
 #    - name: Build and publish
 #      env:
 #        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
