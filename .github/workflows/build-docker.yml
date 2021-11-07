@@ -1,0 +1,19 @@
+name: Build Docker
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  building:
+    name: Building
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+      - name: Build the stack
+        run: make install
+      - name: Test the application
+        run: docker exec django_wishlist python -m pytest apps
+      - name: Show coverage
+        run: docker exec django_wishlist python -m pytest apps --cov=apps
