@@ -34,10 +34,8 @@ jobs:
 #      run: |
 #        ./manage.py migrate --settings=wishlist.settings_dev
     - name: Test the application
-      with:
+      env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-#      env:
-#        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         pytest apps/
 #    - name: Build and publish
