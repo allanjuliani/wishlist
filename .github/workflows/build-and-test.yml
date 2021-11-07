@@ -34,15 +34,16 @@ jobs:
 #      run: |
 #        ./manage.py migrate --settings=wishlist.settings_dev
     - name: Test the application
-      env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}a
-        ALLAN: ${{ env.ALLAN }}a
+
       run: |
         echo Olar
         echo $SECRET_KEY
         echo $ALLAN
         echo Xau
         pytest apps/
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        ALLAN: ${{ env.ALLAN }}
 #    - name: Build and publish
 #      env:
 #        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
