@@ -1,3 +1,3 @@
-from .settings import *
+from .settings import *  # NOQA
 
 DEBUG = False
