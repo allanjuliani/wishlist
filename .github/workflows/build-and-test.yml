@@ -37,3 +37,6 @@ jobs:
     - name: Test the application
       run: |
         pytest apps/
+    - name: Show coverage
+      run: |
+        pytest apps/ --cov=apps/
