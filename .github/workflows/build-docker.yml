@@ -14,6 +14,6 @@ jobs:
       - name: Build the stack
         run: make install
       - name: Test the application
-        run: make tests
+        run: docker exec django_wishlist python -m pytest apps
       - name: Show coverage
         run: make cov
