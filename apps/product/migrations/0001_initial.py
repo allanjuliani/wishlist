@@ -22,12 +22,17 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'title',
-                    models.CharField(max_length=255, unique=True, verbose_name='Title'),
+                    models.CharField(
+                        max_length=255, unique=True, verbose_name='Title'
+                    ),
                 ),
                 (
                     'slug',
                     models.SlugField(
-                        max_length=255, null=True, unique=True, verbose_name='Slug'
+                        max_length=255,
+                        null=True,
+                        unique=True,
+                        verbose_name='Slug',
                     ),
                 ),
                 (
@@ -60,7 +65,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'created',
-                    models.DateTimeField(auto_now_add=True, verbose_name='Created'),
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name='Created'
+                    ),
                 ),
             ],
             options={

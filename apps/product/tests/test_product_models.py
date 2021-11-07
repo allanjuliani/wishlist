@@ -19,4 +19,6 @@ class TestProductModels(TestCase):
         self.assertEqual(str(self.product), 'Product Name - Brand New')
 
     def test_price_formatted(self):
-        self.assertEqual('R$ 99.99', Product.price_formatted.__get__(self.product))
+        self.assertEqual(
+            'R$ 99.99', Product.price_formatted.__get__(self.product)
+        )

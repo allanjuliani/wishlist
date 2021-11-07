@@ -35,4 +35,6 @@ class TestProductAdmin(TestCase):
         )
 
     def test_price_formatted(self):
-        self.assertEqual(ProductAdmin.price_formatted(None, self.product), 'R$ 99.99')
+        self.assertEqual(
+            ProductAdmin.price_formatted(None, self.product), 'R$ 99.99'
+        )

@@ -9,7 +9,9 @@ from apps.product.serializers import ProductSerializer
 
 class NotFound(Response):
     def __init__(self, message):
-        super().__init__(data={"message": message}, status=status.HTTP_404_NOT_FOUND)
+        super().__init__(
+            data={"message": message}, status=status.HTTP_404_NOT_FOUND
+        )
 
 
 class ProductView(APIView):
