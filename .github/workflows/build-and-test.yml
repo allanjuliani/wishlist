@@ -8,6 +8,8 @@ jobs:
   building:
     name: Building
     runs-on: ubuntu-20.04
+    env:
+      SECRET_KEY: workflow
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -16,8 +18,7 @@ jobs:
       with:
         python-version: '3.9'
     - name: Install dependencies
-      env:
-        SECRET_KEY: workflow
+
       run: |
         echo $SECRET_KEY
 
