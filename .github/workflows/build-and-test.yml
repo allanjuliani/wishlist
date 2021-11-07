@@ -39,11 +39,13 @@ jobs:
         echo Olar
         echo $SECRET_KEY
         echo $ALLAN
+        echo $LOCAL
         echo Xau
         pytest apps/
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         ALLAN: ${{ env.ALLAN }}
+        LOCAL: LOCAL
 #    - name: Build and publish
 #      env:
 #        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
