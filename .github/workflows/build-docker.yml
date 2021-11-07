@@ -15,5 +15,3 @@ jobs:
         run: make install
       - name: Test the application
         run: docker exec django_wishlist python -m pytest apps
-      - name: Show coverage
-        run: docker exec django_wishlist python -m pytest apps --cov=apps
