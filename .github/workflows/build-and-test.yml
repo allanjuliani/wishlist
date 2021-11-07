@@ -9,7 +9,7 @@ jobs:
     name: Building
     runs-on: ubuntu-20.04
     env:
-      SECRET_KEY: workflow
+      SECRET_KEY: workflow2
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
