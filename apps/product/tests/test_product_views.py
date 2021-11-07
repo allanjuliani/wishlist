@@ -10,7 +10,9 @@ class TestProductViews(TestCase):
     model = Product
 
     def setUp(self):
-        user = User.objects.create(username='tester', is_superuser=True, is_staff=True)
+        user = User.objects.create(
+            username='tester', is_superuser=True, is_staff=True
+        )
         self.token = Token.objects.create(user=user)
         self.authorization_token = self.token.key
         data = {

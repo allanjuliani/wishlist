@@ -18,19 +18,19 @@ class ProductAdmin(admin.ModelAdmin):
                 total=total,
             )
 
-    clients_link.short_description = _('Clients')
+    clients_link.short_description = _('Clients')  # type: ignore
 
     def image_preview(self, obj):
         return format_html('<img width="100" src="{path}">', path=obj.image)
 
-    image_preview.short_description = _('Image')
-    image_preview.admin_order_field = 'image'
+    image_preview.short_description = _('Image')  # type: ignore
+    image_preview.admin_order_field = 'image'  # type: ignore
 
     def price_formatted(self, obj):
         return obj.price_formatted
 
-    price_formatted.short_description = _('Price')
-    price_formatted.admin_order_field = 'price'
+    price_formatted.short_description = _('Price')  # type: ignore
+    price_formatted.admin_order_field = 'price'  # type: ignore
 
     exclude = ('slug',)
     list_display = (

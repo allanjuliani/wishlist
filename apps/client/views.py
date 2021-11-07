@@ -9,7 +9,9 @@ from apps.client.serializers import ClientSerializer
 
 class NotFound(Response):
     def __init__(self, message):
-        super().__init__(data={'message': message}, status=status.HTTP_404_NOT_FOUND)
+        super().__init__(
+            data={'message': message}, status=status.HTTP_404_NOT_FOUND
+        )
 
 
 class ClientView(APIView):

@@ -31,12 +31,16 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'created',
-                    models.DateTimeField(auto_now_add=True, verbose_name='Created'),
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name='Created'
+                    ),
                 ),
                 (
                     'products',
                     models.ManyToManyField(
-                        blank=True, to='product.Product', verbose_name='Product'
+                        blank=True,
+                        to='product.Product',
+                        verbose_name='Product',
                     ),
                 ),
             ],
