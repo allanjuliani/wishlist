@@ -78,7 +78,7 @@ export $(cat .env.example | xargs)
 #### Create API Token to your user
 
 ```commandline
-./manage.py drf_create_token {{YOUR_USER}} --settings=wishlist.settings_dev
+./manage.py drf_create_token admin --settings=wishlist.settings_dev
 ```
 
 #### Test the application
