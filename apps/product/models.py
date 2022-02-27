@@ -37,3 +37,21 @@ class Product(models.Model):
     @property
     def price_formatted(self):
         return _('R$ {price}').format(price=intcomma(self.price))
+
+
+class Favorite(models.Model):
+    client = models.ForeignKey(
+        "client.Client", verbose_name=_("Client"), on_delete=models.CASCADE
+    )
+    product = models.ForeignKey(
+        "product.Product", verbose_name=_("Product"), on_delete=models.CASCADE
+    )
+    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
+
+    class Meta:
+        unique_together = (('client', 'product'),)
+        verbose_name = _('Favorite')
+        verbose_name_plural = _('Favorites')
+
+    def __str__(self):
+        return f'{self.product} - {self.client}'
