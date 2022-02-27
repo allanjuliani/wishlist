@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
 
-from apps.product.models import Product
+from apps.product.models import Favorite, Product
 
 
 @admin.register(Product)
@@ -47,3 +47,18 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('created', 'review_score', 'brand')
     list_per_page = 20
     search_fields = ('title',)
+
+
+@admin.register(Favorite)
+class FavoriteAdmin(admin.ModelAdmin):
+    autocomplete_fields = ('client', 'product')
+
+    list_display = (
+        'id',
+        'client',
+        'product',
+        'created_at',
+    )
+    list_display_links = list_display
+    list_filter = ('created_at',)
+    list_per_page = 20

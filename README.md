@@ -186,34 +186,32 @@ http://localhost:8000/admin/
 - Content-Type: application/json
 
 #### Add Favorite Product
-- POST /client/product/
+- POST /product/favorite/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 ```json
 {
-    "client_id": 1,
-    "product_id": 1
+    "client": 1,
+    "product": 1
 }
 ```
 
-#### Load Favorites Product
-- GET /client/`{{client_id}}`/products/
+#### Load Favorite Product
+- GET /product/favorite/1/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
-If there is more than 3 products, is generated a pagination URL in the response:
-- GET /client/`{{client_id}}`/products/?page=2
+#### Load Favorites Products
+- GET /product/favorite/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
 
+### Pagination
+- GET /product/favorite/?page=2
+- Authorization: Token `{{AUTHORIZATION_TOKEN}}`
+- Content-Type: application/json
 
 #### Delete Favorite Product
-- DELETE /client/product/
+- DELETE /product/favorite/1/
 - Authorization: Token `{{AUTHORIZATION_TOKEN}}`
 - Content-Type: application/json
-```json
-{
-    "client_id": 1,
-    "product_id": 1
-}
-```
