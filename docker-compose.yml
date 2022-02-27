@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   django:
+    image: "django_django_wishlist:1.0"
     container_name: django_wishlist
     build:
       context: ./
@@ -18,7 +19,7 @@ services:
       retries: 15
   # https://hub.docker.com/_/nginx
   nginx:
-    image: nginx:1.19
+    image: nginx:1.21
     container_name: nginx_wishlist
     ports:
       - "80:80"
