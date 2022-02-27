@@ -20,7 +20,8 @@ class Product(models.Model):
     review_score = models.SmallIntegerField(
         _('Review Score'), choices=ReviewScore.choices, null=True, blank=True
     )
-    created = models.DateTimeField(_('Created'), auto_now_add=True)
+    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
 
     class Meta:
         db_table = 'product'

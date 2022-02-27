@@ -28,7 +28,8 @@ class TestProductViews(TestCase):
             data=data,
         )
         self.new_product = response.json()
-        self.new_product.pop('created')
+        self.new_product.pop('created_at')
+        self.new_product.pop('updated_at')
 
     def test_product_add(self):
         self.assertEquals(
@@ -52,7 +53,8 @@ class TestProductViews(TestCase):
         responses_data = response.json()
 
         for response_data in responses_data:
-            response_data.pop('created')
+            response_data.pop('created_at')
+            response_data.pop('updated_at')
 
         self.assertEquals(
             responses_data,
@@ -92,7 +94,8 @@ class TestProductViews(TestCase):
             content_type='application/json',
         )
         response_data = response.json()
-        response_data.pop('created')
+        response_data.pop('created_at')
+        response_data.pop('updated_at')
 
         self.assertEquals(
             response_data,
@@ -121,7 +124,8 @@ class TestProductViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
         response_data = response.json()
-        response_data.pop('created')
+        response_data.pop('created_at')
+        response_data.pop('updated_at')
 
         self.assertEquals(
             response_data,

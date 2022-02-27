@@ -18,11 +18,21 @@ class ClientAdmin(admin.ModelAdmin):
                 total=total,
             )
 
-    products_link.short_description = _('Products')
+    products_link.short_description = _('Products')  # type: ignore
 
     filter_horizontal = ('products',)
-    list_display = ('id', 'name', 'email', 'products_link', 'created')
+    list_display = (
+        'id',
+        'name',
+        'email',
+        'products_link',
+        'created_at',
+        'updated_at',
+    )
     list_display_links = list_display
-    list_filter = ('created',)
+    list_filter = (
+        'created_at',
+        'updated_at',
+    )
     list_per_page = 20
     search_fields = ('email',)
