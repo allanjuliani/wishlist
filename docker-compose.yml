@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   django:
-    image: "django_django_wishlist:1.0"
+    image: "django_wishlist:1.0"
     container_name: django_wishlist
     build:
       context: ./
