@@ -15,7 +15,8 @@ class ProductSerializer(serializers.ModelSerializer):
             'image',
             'brand',
             'review_score',
-            'created',
+            'created_at',
+            'updated_at',
         ]
 
 

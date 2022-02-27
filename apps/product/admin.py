@@ -41,10 +41,11 @@ class ProductAdmin(admin.ModelAdmin):
         'brand',
         'review_score',
         'clients_link',
-        'created',
+        'created_at',
+        'updated_at',
     )
     list_display_links = list_display
-    list_filter = ('created', 'review_score', 'brand')
+    list_filter = ('created_at', 'updated_at', 'review_score', 'brand')
     list_per_page = 20
     search_fields = ('title',)
 

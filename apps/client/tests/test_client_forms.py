@@ -27,6 +27,7 @@ class TestClientForms(TestCase):
             ]
             queryset = self.model.objects.values().all()
             dict_from_queryset = [entry for entry in queryset]
-            dict_from_queryset[0].pop('created')
+            dict_from_queryset[0].pop('created_at')
+            dict_from_queryset[0].pop('updated_at')
             self.assertEquals(self.model.objects.all().count(), 1)
             self.assertEqual(dict_from_queryset, dict_that_should_return)
