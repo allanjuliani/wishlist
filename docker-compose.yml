@@ -46,7 +46,7 @@ services:
     expose:
       - '3306'
     volumes:
-      - my-db:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     healthcheck:
       test: "mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD"
       timeout: 30s
