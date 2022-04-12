@@ -48,7 +48,7 @@ class TestProductViews(TestCase):
         self.new_favorite = response.json()
 
     def test_product_add(self):
-        self.assertEquals(
+        self.assertEqual(
             self.new_product,
             {
                 'id': 1,
@@ -72,7 +72,7 @@ class TestProductViews(TestCase):
             response_data.pop('created_at')
             response_data.pop('updated_at')
 
-        self.assertEquals(
+        self.assertEqual(
             responses_data,
             [
                 {
@@ -93,7 +93,7 @@ class TestProductViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEquals(response.json(), {'message': 'Product not found'})
+        self.assertEqual(response.json(), {'message': 'Product not found'})
 
     def test_product_update(self):
         data = {
@@ -113,7 +113,7 @@ class TestProductViews(TestCase):
         response_data.pop('created_at')
         response_data.pop('updated_at')
 
-        self.assertEquals(
+        self.assertEqual(
             response_data,
             {
                 'id': 1,
@@ -132,7 +132,7 @@ class TestProductViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEquals(response.json(), {'message': 'Product not found'})
+        self.assertEqual(response.json(), {'message': 'Product not found'})
 
     def test_product_delete(self):
         response = self.client.delete(
@@ -143,7 +143,7 @@ class TestProductViews(TestCase):
         response_data.pop('created_at')
         response_data.pop('updated_at')
 
-        self.assertEquals(
+        self.assertEqual(
             response_data,
             {
                 'id': None,
@@ -162,7 +162,7 @@ class TestProductViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEquals(response.json(), {'message': 'Product not found'})
+        self.assertEqual(response.json(), {'message': 'Product not found'})
 
     def test_favorite_delete(self):
         response = self.client.delete(
@@ -172,7 +172,7 @@ class TestProductViews(TestCase):
         response_data = response.json()
         response_data.pop('created_at')
 
-        self.assertEquals(
+        self.assertEqual(
             response_data,
             {
                 'id': None,
@@ -187,7 +187,7 @@ class TestProductViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEquals(response.json(), {'message': 'Favorite not found'})
+        self.assertEqual(response.json(), {'message': 'Favorite not found'})
 
     def test_favorite_view(self):
         response = self.client.get(
@@ -199,7 +199,7 @@ class TestProductViews(TestCase):
         for response_data in responses_data:
             response_data.pop('created_at')
 
-        self.assertEquals(
+        self.assertEqual(
             responses_data,
             [
                 {
@@ -216,4 +216,4 @@ class TestProductViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEquals(response.json(), {'message': 'Favorite not found'})
+        self.assertEqual(response.json(), {'message': 'Favorite not found'})
