@@ -41,10 +41,10 @@ docker-clean:
 	@docker volume prune
 
 tests:
-	@docker exec -it django_wishlist python -m pytest -v apps
+	@docker exec -it django_wishlist python -m pytest -v apps --ds=wishlist.settings_test
 
 cov:
-	@docker exec -it django_wishlist python -m pytest -v apps --cov=apps
+	@docker exec -it django_wishlist python -m pytest -v apps --cov=apps --ds=wishlist.settings_test
 
 createsuperuser:
 	@docker exec -it django_wishlist python manage.py createsuperuser --noinput --settings=wishlist.settings_prod
