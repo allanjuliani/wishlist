@@ -28,5 +28,4 @@ class FavoriteSerializer(serializers.ModelSerializer):
             'client',
             'product',
             'created_at',
-            'updated_at',
         ]
