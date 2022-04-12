@@ -37,7 +37,7 @@ class Product(models.Model):
 
     @property
     def price_formatted(self):
-        return _('R$ {price}').format(price=intcomma(self.price))
+        return _('$ {price}').format(price=intcomma(self.price))
 
 
 class Favorite(models.Model):
