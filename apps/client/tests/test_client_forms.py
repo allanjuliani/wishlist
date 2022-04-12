@@ -14,7 +14,7 @@ class TestClientForms(TestCase):
             'email': 'clientemail@example.com',
         }
         client_form = self.form(data=data)
-        self.assertEqual(self.model.objects.all().count(), 0)
+        self.assertEquals(self.model.objects.all().count(), 0)
 
         if client_form.is_valid():
             client_form.save()
@@ -29,5 +29,5 @@ class TestClientForms(TestCase):
             dict_from_queryset = [entry for entry in queryset]
             dict_from_queryset[0].pop('created_at')
             dict_from_queryset[0].pop('updated_at')
-            self.assertEqual(self.model.objects.all().count(), 1)
+            self.assertEquals(self.model.objects.all().count(), 1)
             self.assertEqual(dict_from_queryset, dict_that_should_return)

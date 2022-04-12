@@ -29,7 +29,7 @@ class TestClientViews(TestCase):
         self.new_client.pop('updated_at')
 
     def test_client_add(self):
-        self.assertEqual(
+        self.assertEquals(
             self.new_client,
             {
                 'id': 1,
@@ -49,7 +49,7 @@ class TestClientViews(TestCase):
             response_data.pop('created_at')
             response_data.pop('updated_at')
 
-        self.assertEqual(
+        self.assertEquals(
             responses_data,
             [
                 {
@@ -66,7 +66,7 @@ class TestClientViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEqual(response.json(), {'message': 'Client not found'})
+        self.assertEquals(response.json(), {'message': 'Client not found'})
 
     def test_client_update(self):
         data = {
@@ -83,7 +83,7 @@ class TestClientViews(TestCase):
         response_data.pop('created_at')
         response_data.pop('updated_at')
 
-        self.assertEqual(
+        self.assertEquals(
             response_data,
             {
                 'id': 1,
@@ -98,7 +98,7 @@ class TestClientViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEqual(response.json(), {'message': 'Client not found'})
+        self.assertEquals(response.json(), {'message': 'Client not found'})
 
     def test_client_delete(self):
         response = self.client.delete(
@@ -109,7 +109,7 @@ class TestClientViews(TestCase):
         response_data.pop('created_at')
         response_data.pop('updated_at')
 
-        self.assertEqual(
+        self.assertEquals(
             response_data,
             {
                 'id': None,
@@ -124,4 +124,4 @@ class TestClientViews(TestCase):
             HTTP_AUTHORIZATION=self.authorization_token,
         )
 
-        self.assertEqual(response.json(), {'message': 'Client not found'})
+        self.assertEquals(response.json(), {'message': 'Client not found'})

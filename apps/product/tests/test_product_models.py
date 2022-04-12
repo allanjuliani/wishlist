@@ -29,7 +29,7 @@ class TestProductModels(TestCase):
 
     def test_price_formatted(self):
         self.assertEqual(
-            '$ 99.99', Product.price_formatted.__get__(self.product)
+            'R$ 99.99', Product.price_formatted.__get__(self.product)
         )
 
     def test_favorite_str(self):
