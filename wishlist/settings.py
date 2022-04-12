@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     # 'django_seed',
+    'apps.wishlist',
     'apps.client',
     'apps.product',
 ]
