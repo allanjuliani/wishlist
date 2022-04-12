@@ -84,13 +84,13 @@ export $(cat .env.example | xargs)
 #### Test the application
 
 ```commandline
-pytest apps/
+pytest -v apps/
 ```
 
 #### Show coverage
 
 ```commandline
-pytest apps/ --cov=apps/
+pytest -v apps/ --cov=apps/
 ```
 
 #### Running the application
