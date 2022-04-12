@@ -2,11 +2,11 @@ name: Build Locally
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main_ ]
 
 jobs:
   building:
-    name: Building
+    name: Building Locally
     runs-on: ubuntu-20.04
     env:
       SECRET_KEY: workflow
@@ -31,12 +31,15 @@ jobs:
     - name: Install Python Dependencies
       run: |
         pip install -r requirements.txt
+    - name: Export env variables
+      run: |
+        export $(cat .env.example | xargs)
     - name: Install Database
       run: |
         ./manage.py migrate --settings=wishlist.settings_dev
     - name: Test the application
       run: |
-        pytest apps/
+        pytest -v apps/
     - name: Show coverage
       run: |
-        pytest apps/ --cov=apps/
+        pytest -v apps/ --cov=apps/
