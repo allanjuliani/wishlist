@@ -1,3 +1,4 @@
+*.log
 *.pyc
 *.sqlite3
 .coverage
@@ -7,6 +8,7 @@
 __pycache__/
 CACHE/
 cov.xml
+coverage.xml
 media/
 static/
 venv/

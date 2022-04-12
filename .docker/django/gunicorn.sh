@@ -15,4 +15,5 @@ exec python -m gunicorn ${DJANGO_WSGI_MODULE}:application \
   --workers ${WORKERS} \
   --threads ${THREADS} \
   --user ${USER} \
-  --bind ${ADDRESS}
+  --bind ${ADDRESS} # \
+#   &>/dev/null &disown

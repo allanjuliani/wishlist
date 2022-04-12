@@ -81,6 +81,7 @@ WSGI_APPLICATION = 'wishlist.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # CREATE DATABASE wishlist CHARACTER SET utf8 COLLATE utf8_general_ci;
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': os.environ['MYSQL_HOST'],
