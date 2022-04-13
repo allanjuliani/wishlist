@@ -84,13 +84,13 @@ export $(cat .env.example | xargs)
 #### Test the application
 
 ```commandline
-pytest -v apps/
+pytest -v apps/ --ds=wishlist.settings_test
 ```
 
 #### Show coverage
 
 ```commandline
-pytest -v apps/ --cov=apps/
+pytest -v apps/ --cov=apps/  --ds=wishlist.settings_test
 ```
 
 #### Running the application
