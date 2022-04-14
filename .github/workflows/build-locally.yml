@@ -1,19 +1,26 @@
-name: Build Locally
+name: Build locally
 
 on:
   push:
-    branches: [ main_ ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+  MYSQL_NAME: ${{ secrets.MYSQL_NAME }}
+  MYSQL_USER: ${{ secrets.MYSQL_USER }}
+  MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
 
 jobs:
   building:
-    name: Building Locally
+    name: Build locally
     runs-on: ubuntu-20.04
     env:
       SECRET_KEY: workflow
     steps:
     - name: Check Out Repo
       uses: actions/checkout@v2
-    - name: Set up Python
+    - name: Setup Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
