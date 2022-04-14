@@ -1,5 +1,7 @@
 # Django Wishlist
 
+[![codecov](https://codecov.io/gh/allanjuliani/wishlist/branch/main/graph/badge.svg?token=OMRJY70MGP)](https://codecov.io/gh/allanjuliani/wishlist)
+
 ## Using Docker
 
 ### Install Docker
