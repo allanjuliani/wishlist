@@ -4,39 +4,39 @@
 
 ## Using Docker
 
-### Install Docker
+### 🐋 Install Docker
 
 https://docs.docker.com/engine/install/
 
 https://docs.docker.com/compose/install/
 
-### Install project
+### 🖥️ Install project
 ```commandline
 make install
 ```
 
-### Run tests
+### 🧪 Run tests
 ```commandline
 make tests
 ```
 
-### Show coverage
+### 🔍 Show coverage
 ```commandline
 make cov
 ```
 
-### Create superuser for admin
+### 👤 Create superuser for admin
 This command will create a user based on environment var defined at .env file
 ```commandline
 make createsuperuser
 ```
 
-### Create token to rest api
+### 🔐 Create token to rest api
 ```commandline
 make createtoken username=admin
 ```
 
-#### Admin URL to access on browser
+#### 🔗 Admin URL to access on browser
 http://localhost/admin/
 
 ### Without Docker
