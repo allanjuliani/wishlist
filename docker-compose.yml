@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   django:
     image: "django_wishlist:1.0"
