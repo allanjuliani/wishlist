@@ -26,11 +26,12 @@ repos:
     rev: 6.1.0
     hooks:
     -   id: flake8
+        exclude: ^(.venv/|migrations/|wishlist/|apps/product/migrations/)
 -   repo: https://github.com/psf/black
     rev: 23.7.0
     hooks:
     -   id: black
-        exclude: ^(venv/|migrations/)
+        exclude: ^(.venv/|migrations/|wishlist/|apps/product/migrations/)
         language: python
         language_version: python3
         args: [
@@ -41,4 +42,4 @@ repos:
     rev: v1.5.1
     hooks:
     -   id: mypy
-        exclude: apps/product/migrations/
+        exclude: ^(.venv/|migrations/|wishlist/|apps/product/migrations/)
