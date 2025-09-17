@@ -3,15 +3,13 @@
 # pre-commit run --all-files
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v6.0.0
     hooks:
     -   id: check-added-large-files
     -   id: check-ast
-    -   id: check-byte-order-marker
     -   id: check-case-conflict
     -   id: check-docstring-first
     -   id: check-executables-have-shebangs
-    -   id: check-json
     -   id: check-yaml
     -   id: debug-statements
     -   id: detect-private-key
@@ -19,16 +17,16 @@ repos:
     -   id: mixed-line-ending
     -   id: trailing-whitespace
 -   repo: https://github.com/timothycrosley/isort
-    rev: 5.11.5
+    rev: 6.0.1
     hooks:
     -   id: isort
 -   repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
+    rev: 7.3.0
     hooks:
     -   id: flake8
         exclude: ^(.venv/|migrations/|wishlist/|apps/product/migrations/)
 -   repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 25.1.0
     hooks:
     -   id: black
         exclude: ^(.venv/|migrations/|wishlist/|apps/product/migrations/)
@@ -39,7 +37,7 @@ repos:
                 --line-length=79
         ]
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.1
+    rev: v1.18.1
     hooks:
     -   id: mypy
         exclude: ^(.venv/|migrations/|wishlist/|apps/product/migrations/)

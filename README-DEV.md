@@ -1,8 +1,8 @@
 # Wishlist - Dev
 
-#### Ubuntu 20.04 Dependencies
+#### Ubuntu Dependencies
 ```commandline
-sudo apt-get install git build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
+sudo apt-get install git pkg-config build-essential python3-virtualenv libxml2-dev libxslt1-dev libevent-dev python3-dev libsasl2-dev libmysqlclient-dev libjpeg-dev libffi-dev libssl-dev -y
 ```
 
 #### Create the Virtualenv
